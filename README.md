@@ -1,7 +1,7 @@
 # oekogotschi-editor
 Web editor for the OekoGotschi
 
-
+This project is kindly supported by [netidee](https://www.netidee.at/) an initiative by the [Austrian Internet Foundation IPA](http://www.nic.at/ipa)
 
 ## Prerequisites
 
