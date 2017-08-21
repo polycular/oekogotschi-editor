@@ -1,0 +1,61 @@
+<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+  <div class="thumbnail">
+    <div class="thumb">
+      {{#if campaign.logo}}
+        <img src="{{media campaign.logo.id width=600 height=450}}" alt="{{campaign.name}}">
+      {{else}}
+        <img src="/images/campaign-placeholder.png" width="262" alt="{{campaign.name}}">
+      {{/if}}
+      <div class="caption-overflow">
+        {{!--
+        <span class="multi-row">
+          <div class='btn border-white text-white btn-flat btn-icon btn-rounded ml-5'>
+            <i class="icon-stats-bars"></i>
+          </div>
+        </span>
+        --}}
+        <span>
+          {{#link-to 'campaigns.edit' campaign.id class='btn border-white text-white btn-flat btn-icon btn-rounded ml-5'}}
+            <i class="icon-pencil3"></i>
+          {{/link-to}}
+          {{#link-to 'campaigns.settings' campaign.id class='btn border-white text-white btn-flat btn-icon btn-rounded ml-5'}}
+            <i class="icon-cog"></i>
+          {{/link-to}}
+          <div {{action 'copy' campaign on='click'}} class='btn border-white text-white btn-flat btn-icon btn-rounded ml-5'>
+            <i class="icon-copy3"></i>
+          </div>
+          <div {{action 'remove' campaign on='click'}} class='btn border-white text-white btn-flat btn-icon btn-rounded ml-5'>
+            <i class="icon-cross2"></i>
+          </div>
+        </span>
+      </div>
+    </div>
+    <div class="caption">
+      <h6 class="no-margin shortened">
+        {{#link-to 'campaigns.edit' campaign.id class='text-default'}}
+          {{campaign.name}}
+        {{/link-to}}
+      </h6>
+      <small class="text-muted">({{t campaign.state}})</small>
+      <div class="row">
+        <div class="col-sm-12">
+          {{#if campaign.start}}
+            <small>
+              {{format-date
+                campaign.start
+                format='DD. MMM YYYY'
+              }}
+              -
+              <span class="no-wrap">
+                {{format-date
+                  campaign.end
+                  format='DD. MMM YYYY'
+                }}
+              </span>
+            </small>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

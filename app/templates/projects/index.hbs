@@ -1,0 +1,121 @@
+<div class="page-header">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h1>{{t 'Projects'}}</h1>
+    </div>
+
+    <div class="heading-elements">
+      <form class="heading-form" action="#">
+        <span class="heading-text">{{t 'Switch Client'}}</span>
+        <div class="form-group heading-form">
+          {{#power-select options=currentUser.clients selected=model.client searchEnabled=false onchange=(action 'changeClient') as |client|}}
+            {{client.name}}
+          {{/power-select}}
+        </div>
+      </form>
+    </div>
+    <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+  </div>
+
+  <div class="breadcrumb-line breadcrumb-line-component">
+    <ul class="breadcrumb">
+      <li>
+        {{#link-to 'index'}}
+          <i class="icon-home2 position-left"></i> {{t 'Home'}}
+        {{/link-to}}
+      </li>
+      <li class="active">{{t 'Projects'}}</li>
+    </ul>
+    {{#p-breadcrumb-sort}}
+      {{p-breadcrumb-sort-item
+        icon='numeric'
+        attribute='createdAt'
+        current=sort
+        title='Created'
+      }}
+      {{p-breadcrumb-sort-item
+        icon='alpha'
+        attribute='name'
+        current=sort
+        title='Name'
+      }}
+    {{/p-breadcrumb-sort}}
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="row">
+    {{#if model.client.id}}
+      <div {{action 'openModal' 'openCreateProjectModal'}} class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+        <div class="thumbnail">
+          <div class="thumb">
+            <img src="/images/project-add-600x450.png">
+            <div class="caption-overflow">
+            <span>
+              <a class="btn border-white text-white btn-flat btn-icon btn-rounded ml-5">
+                <i class="icon-plus2"></i>
+              </a>
+            </span>
+            </div>
+          </div>
+          <div class="caption">
+            <h6 class="no-margin">
+              <a class="text-default">{{t 'New Project'}}</a>
+            </h6>
+          </div>
+        </div>
+      </div>
+      {{#unless projects}}
+        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+          {{p-how-to title='Create a new project by pressing the + button on the left.'}}
+        </div>
+      {{/unless}}
+    {{else}}
+      <div class="col-sm-12">
+        <p class="text-muted">
+          {{t 'No client selected. Please select one on the top right of the page.'}}
+        </p>
+      </div>
+    {{/if}}
+    {{#each projects as |project|}}
+      <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+        <div class="thumbnail">
+          <div class="thumb">
+            {{#if project.image.id}}
+              <img src="{{media project.image.id width=600 height=450}}" alt="{{project.name}}">
+            {{else}}
+              <img src="/images/project-placeholder.png" width="262" alt="{{project.name}}">
+            {{/if}}
+            <div class="caption-overflow">
+              <span>
+                {{#link-to 'projects.edit' project.id (query-params clientId=clientId) class='btn border-white text-white btn-flat btn-icon btn-rounded ml-5'}}
+                  <i class="icon-pencil3"></i>
+                {{/link-to}}
+              </span>
+            </div>
+          </div>
+          <div class="caption">
+            <h6 class="no-margin shortened">
+              {{#link-to 'projects.edit' project.id class='text-default'}}
+                {{project.name}}
+              {{/link-to}}
+            </h6>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
+
+{{#bs-modal title=(t 'Create Project') open=openCreateProjectModal onHide=(action 'toggleModal' 'openCreateProjectModal') as |modal|}}
+  {{#modal.body}}
+     {{#bs-form onSubmit=(action 'createProject' 'openCreateProjectModal' this) model=this as |form|}}
+      <label>{{t 'Name'}}</label>
+      {{input type="text" class='form-control' value=name autofocus=true maxlength=30}}
+      <label>{{t 'Description'}}</label>
+      {{textarea class='form-control vertical-resize' value=description}}
+    {{/bs-form}}
+  {{/modal.body}}
+  {{modal.footer closeTitle=(t 'Cancel') submitTitle=(t 'Create')}}
+{{/bs-modal}}

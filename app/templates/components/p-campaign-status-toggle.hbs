@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-sm-12 text-right">
+    {{#if isPublished}}
+      <button {{action 'changeCampaignState' campaign 'trash'}} class="btn btn-xs btn-danger">
+        <i class="fa fa-trash"></i>
+      </button>
+    {{else if isDraft}}
+      <button {{action 'changeCampaignState' campaign 'pending'}} class="btn btn-xs btn-warning">
+        <i class="fa fa-file-text-o"></i>
+      </button>
+    {{else if isPrivate}}
+      <button {{action 'changeCampaignState' campaign 'draft'}} class="btn btn-xs btn-primary">
+        <i class="fa fa-pencil"></i>
+      </button>
+    {{else if isPending}}
+      <button {{action 'changeCampaignState' campaign 'draft'}} class="btn btn-xs btn-primary">
+        <i class="fa fa-pencil"></i>
+      </button>
+      <button {{action 'changeCampaignState' campaign 'published'}} class="btn btn-xs btn-success">
+        <i class="fa fa-newspaper-o"></i>
+      </button>
+    {{else if isTrash}}
+      <button {{action 'changeCampaignState' campaign 'published'}} class="btn btn-xs btn-success">
+        <i class="fa fa-newspaper-o"></i>
+      </button>
+    {{/if}}
+    <button {{action 'changeCampaignState' campaign 'private'}} class="btn btn-xs btn-default">
+      <i class="fa fa-lock"></i>
+    </button>
+  </div>
+</div>

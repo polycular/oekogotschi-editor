@@ -1,0 +1,66 @@
+{
+  "name": "oekogotschi web editor",
+  "version": "0.2",
+  "description": "okogotschi web editor",
+  "author": "polycular <info@polycular.com>",
+  "repository": {
+    "tpye": "git",
+    "url": "ssh://git@github.com:polycular/oekogotschi-editor.git"
+  },
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "main": "app/app.js",
+  "scripts": {
+    "postinstall": "bower install",
+    "start": "ember server",
+    "test": "ember test"
+  },
+  "devDependencies": {
+    "bootstrap": "^3.x",
+    "broccoli-asset-rev": "^2.x",
+    "codemirror": "^5.x",
+    "dropzone": "^5.x",
+    "ember-ajax": "^3.x",
+    "ember-bootstrap": "kaliber5/ember-bootstrap#1e7b08fd1f",
+    "ember-browserify": "^1.x",
+    "ember-cli": "^2.x",
+    "ember-cli-app-version": "^3.x",
+    "ember-cli-babel": "^6.x",
+    "ember-cli-bootstrap-datepicker": "0.x",
+    "ember-cli-dependency-checker": "^2.x",
+    "ember-cli-eslint": "^4.x",
+    "ember-cli-g-maps": "^0.x",
+    "ember-cli-htmlbars": "^2.x",
+    "ember-cli-htmlbars-inline-precompile": "^0.x",
+    "ember-cli-inject-live-reload": "^1.x",
+    "ember-cli-less": "^1.x",
+    "ember-cli-moment-shim": "^3.x",
+    "ember-cli-qunit": "^4.x",
+    "ember-cli-release": "^0.x",
+    "ember-cli-shims": "^1.x",
+    "ember-cli-sri": "^2.x",
+    "ember-cli-uglify": "^1.x",
+    "ember-data": "~2.14.x",
+    "ember-export-application-global": "^2.x",
+    "ember-i18n": "^5.x",
+    "ember-load-initializers": "^1.x",
+    "ember-moment": "^7.x",
+    "ember-power-select": "~1.2.x",
+    "ember-qrcode-shim": "0.x",
+    "ember-resolver": "^4.x",
+    "ember-simple-auth": "^1.x",
+    "ember-source": "^2.x",
+    "gmaps-for-apps": "^0.x",
+    "ivy-codemirror": "^2.x",
+    "loader.js": "^4.x",
+    "lodash": "^4.x",
+    "moment": "^2.x"
+  },
+  "engines": {
+    "node": ">=8.x",
+    "yarn": ">=0.x"
+  },
+  "private": true
+}

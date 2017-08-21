@@ -1,0 +1,29 @@
+<div class="form-group">
+  <label class="col-lg-2 control-label text-right">{{t 'Name'}}</label>
+  <div class="col-lg-10">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="icon-paragraph-left2"></i></span>
+      {{textarea focus-out=(action 'setDirty') rows="1" cols="5" class="form-control" value=data.name placeholder=(t "Enter name here...")}}
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-lg-2 control-label text-right">{{t 'Audio'}}</label>
+  <div class="col-lg-10 thumbnail" style="margin-left:10px;max-width:50em;">
+    {{#if data.file}}
+      <div class="media-preview-container">
+        <audio src="{{media data.file.id extension=data.file.extension}}" class="display-block" controls></audio>
+      </div>
+    {{/if}}
+    {{#p-upload url=(concat (api) "/files") acceptedFiles="audio/*" class="dz-bordered" success=(action 'addFile')}}
+      <div class="caption text-center">
+        <i class="icon-file-plus"></i> &nbsp;
+        <span class="text-muted">{{t 'Drag audio file here or click to choose audio file for upload.'}}</span>
+      </div>
+    {{/p-upload}}
+    {{#if data.file}}
+      <i>{{t 'Current saved file'}}: {{data.file.name}}</i>
+    {{/if}}
+  </div>
+</div>

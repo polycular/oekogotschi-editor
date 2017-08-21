@@ -1,0 +1,49 @@
+{{#each data.texts as |text index|}}
+  <div class="form-group">
+    <label class="col-lg-2 control-label text-right">{{t 'Title'}}</label>
+    <div class="col-lg-10">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="icon-file-text2"></i></span>
+        {{textarea focus-out=(action 'setArray' data.headlines index) rows="1" cols="5" class="form-control" value=(get (index-of data.headlines index) 'value') placeholder=(t "Enter the speechbubble title here…") }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-lg-2 control-label text-right">{{t 'Text'}}</label>
+    <div class="col-lg-10">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="icon-file-text2"></i></span>
+        {{textarea focus-out=(action 'setArray' data.texts index) rows="5" cols="5" class="form-control" value=(get (index-of data.texts index) 'value') placeholder=(t "Enter the speechbubble message here…") }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-lg-2 control-label text-right">{{t 'URL'}}</label>
+    <div class="col-lg-10">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="icon-sphere"></i></span>
+        {{input focus-out=(action 'setArray' data.urls index) type="text" class="form-control" placeholder="https://" value=(get (index-of data.urls index) 'value')}}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-10 col-lg-offset-2 text-left">
+      <button type="button" class="btn btn-danger btn-xs" {{action 'removeSpeechbubblePair' index}}>
+        <i class="fa fa-times position-left"></i> {{t 'Remove Bubble'}}
+      </button>
+    </div>
+  </div>
+
+  <hr>
+{{/each}}
+
+<div class="form-group">
+  <div class="col-lg-10 col-lg-offset-2 text-left">
+    <button type="button" class="btn btn-default" {{action 'addSpeechbubblePair'}}>
+      <i class="icon-plus2 position-left"></i> {{t 'Add Bubble'}}
+    </button>
+  </div>
+</div>

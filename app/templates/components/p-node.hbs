@@ -1,0 +1,58 @@
+<div id="node-{{data.id}}" class="panel panel-flat panel-collapsed timeline-content">
+  <div class="panel-heading">
+      {{#if collapsed}}
+        <h5 class='panel-title' {{action 'toggleCollapse' on='click'}}>
+        {{#if (get data 'name')}}
+          {{get data 'name'}}
+        {{else}}
+          {{t 'Enter a node name…'}}
+        {{/if}}
+        </h5>
+      {{else}}
+        <h5 class='panel-title'>
+        {{input class="form-control" value=data.name}}
+        </h5>
+      {{/if}}
+    <div class="heading-elements">
+      <ul class="icons-list">
+        {{#if hasControls}}
+          <li class="ml-10">
+            <a {{action 'moveUp'}} class="icon-arrow-up5"></a>
+          </li>
+          <li class="ml-10">
+            <a {{action 'moveDown'}} class="icon-arrow-down5"></a>
+          </li>
+          <li class="ml-10">
+            <a {{action 'remove' data.id}} class="icon-bin"></a>
+          </li>
+        {{/if}}
+        <li class="ml-10">
+          <a {{action 'toggleCollapse'}} class="{{if collapsed "fa fa-expand" "fa fa-compress"}}"></a>
+        </li>
+      </ul>
+    </div>
+    <a class="heading-elements-toggle">
+      <i class="icon-more"></i>
+    </a>
+  </div>
+  {{#unless collapsed}}
+    <div class="panel-body form-horizontal">
+
+      {{yield}}
+
+      <div id="component-insert">
+        <h4>{{t 'Insert Component'}}</h4>
+        {{#each componentList as |component|}}
+        <button {{action 'addComponent' component.type component.template}} type="button" class="btn">
+          <i class="{{component.icon}}"></i>
+          <span>{{t component.name}}</span>
+        </button>
+        {{/each}}
+      </div>
+      <div id="component-save">
+        <button type='button' {{action 'cancel'}} class="cancel">{{t 'Cancel'}}</button>
+        <button type='button' {{action 'save'}} class="btn btn-primary">{{t 'Save'}}</button>
+      </div>
+    </div>
+  {{/unless}}
+</div>

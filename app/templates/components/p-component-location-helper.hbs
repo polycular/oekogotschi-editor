@@ -1,0 +1,30 @@
+<div class="form-group no-margin-bottom mb-10">
+  <label class="col-lg-2 control-label text-right" for='helper-active'>{{t 'Use help by default'}}</label>
+  <label class='switch'>
+    <input id='helper-active' type='checkbox' checked={{data.turnOnByDefault}} onChange={{action 'toggleHelper' value='target.checked'}} />
+    <span class='slider'></span>
+  </label>
+  {{#if data.turnOnByDefault}}<span class='active'>{{t 'On'}}</span>{{/if}}
+  <p class="explanation">{{t 'If turned on, useres are provided by default with help in form of direction and distance indication.'}}</p>
+</div>
+
+<div class="form-group no-margin-bottom mb-10">
+  <label class="col-lg-2 control-label text-right">{{t 'Penalty points'}}</label>
+  <div class="col-lg-10">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+      {{input class="form-control" placeholder=(t "Enter penalty value here…") value=data.penalty readonly=(if data.turnOnByDefault 'true')}}
+    </div>
+    <p class="explanation">{{t 'Penalty points are deducted from users using the optional help.<br>If the help is activated by default, there are no penalty points.'}}</p>
+  </div>
+</div>
+
+<div class="form-group no-margin-bottom mb-10">
+  <label class="col-lg-2 control-label text-right" for='show-track'>{{t 'Show track'}}</label>
+  <label class='switch'>
+    <input id='show-track' type='checkbox' checked={{data.showTrack}} onChange={{action 'toggleShowTrack' value='target.checked'}} />
+    <span class='slider'></span>
+  </label>
+  {{#if data.showTrack}}<span class='active'>{{t 'On'}}</span>{{/if}}
+  <p class="explanation">{{t 'Shows users on the map the way to the locations.'}}</p>
+</div>

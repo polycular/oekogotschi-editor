@@ -1,0 +1,66 @@
+<div class="page-content">
+  {{#p-sidebar class='sidebar-main'}}
+    <div class="sidebar-category sidebar-category-visible">
+      <div class="category-content no-padding">
+        <ul class="navigation navigation-main navigation-accordion">
+          <li class="navigation-header">
+            <span>{{t 'Admin'}}</span><i class="icon-menu" title="Main"></i>
+          </li>
+          {{#link-to 'index' tagName='li'}}
+            <a href="{{href}}">
+              <i class="icon-home4"></i><span>{{t 'Dashboard'}}</span>
+            </a>
+          {{/link-to}}
+          {{#link-to 'projects.index' tagName='li'}}
+            <a href="{{href}}">
+              <i class="icon-stack"></i><span>{{t 'Projects'}}</span>
+            </a>
+          {{/link-to}}
+          {{#link-to 'clients.index' tagName='li'}}
+            <a href="{{href}}">
+              <i class="icon-key"></i><span>{{t 'Clients'}}</span>
+            </a>
+          {{/link-to}}
+          {{!--
+          {{#if (acl 'dashboard' 'ADMIN' 'R')}}
+          --}}
+            {{#link-to 'users.index' tagName='li'}}
+              <a href="{{href}}">
+                <i class="icon-users"></i><span>{{t 'Users'}}</span>
+              </a>
+            {{/link-to}}
+          {{!--
+          {{/if}}
+          --}}
+          <li class="navigation-header">
+            <span>{{t 'Documentation'}}</span><i class="icon-menu" title="{{t 'Documentation'}}"></i>
+          </li>
+          {{#link-to 'help' tagName='li'}}
+            <a href="{{href}}">
+              <i class="icon-question4"></i><span>{{t 'Help'}}</span>
+            </a>
+          {{/link-to}}
+          {{#link-to 'api' tagName='li'}}
+            <a href="{{href}}">
+              <i class="icon-server"></i><span>{{t 'API'}}</span>
+            </a>
+          {{/link-to}}
+          {{#link-to 'templates' tagName='li'}}
+            <a href="{{href}}">
+              <i class="icon-file-empty2"></i><span>{{t 'Templates'}}</span>
+            </a>
+          {{/link-to}}
+          {{#link-to 'logs' tagName='li'}}
+            <a href="{{href}}">
+              <i class="icon-stack3"></i><span>{{t 'Logs'}}</span>
+            </a>
+          {{/link-to}}
+        </ul>
+      </div>
+    </div>
+  {{/p-sidebar}}
+
+  {{#p-content}}
+    {{yield}}
+  {{/p-content}}
+</div>

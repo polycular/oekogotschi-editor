@@ -1,0 +1,96 @@
+{{#bs-tab customTabs=true as |tab|}}
+   {{#bs-nav type="tabs" as |nav|}}
+      {{#nav.item active=(bs-eq tab.activeId (concat 'action-' data.orderId))}}
+        <a href="#action-{{data.orderId}}" role="tab" {{action tab.select (concat 'action-' data.orderId)}}>{{t 'Action'}}</a>
+        <i class="fa fa-flash"></i>
+      {{/nav.item}}
+      {{#nav.item active=(bs-eq tab.activeId (concat 'action-timer-' data.orderId))}}
+        <a href="#action-timer-{{data.orderId}}" role="tab" {{action tab.select (concat 'action-timer-' data.orderId)}}>{{t 'Timer'}}</a>
+        <i class="fa fa-clock-o"></i>
+      {{/nav.item}}
+   {{/bs-nav}}
+
+  <div class="tab-content">
+  {{#tab.pane elementId=(concat 'action-' data.orderId) title=(t 'Action')}}
+    <div class="form-group">
+      <label class="col-lg-2 control-label text-right">{{t 'Text'}}</label>
+      <div class="col-lg-10">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon-paragraph-left2"></i></span>
+          {{textarea rows="5" cols="5" class="form-control" value=data.text placeholder=(t "Enter text here…")}}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group no-margin-bottom mb-10">
+      <label class="col-lg-2 control-label text-right">{{t 'Points'}}</label>
+      <div class="col-lg-10">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-trophy"></i></span>
+          {{input class="form-control" placeholder=(t "Enter max points value here…") value=data.points}}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group no-margin-bottom mb-10">
+      <label class="col-lg-2 control-label text-right">{{t 'PIN'}}</label>
+      <div class="col-lg-10">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-map-pin"></i></span>
+          {{input class="form-control" placeholder=(t "Enter PIN here…") value=data.pin}}
+        </div>
+      </div>
+    </div>
+
+    {{#each medias as |media|}}
+      <div class="media">
+        <div class="media-header">
+          <span class="media-type">{{t media.type}}</span>
+          <span class="media-control">
+            <a {{action 'move' media 'up'}} class="icon-arrow-up5"></a>
+            <a {{action 'move' media 'down'}} class="icon-arrow-down5"></a>
+            <a {{action 'remove' media}} class="icon-bin"></a>
+          </span>
+        </div>
+        <div class="media-component">
+          {{component (concat 'p-component-media-' media.type) data=media setDirty=(action 'setDirty')}}
+        </div>
+      </div>
+    {{/each}}
+
+    <div class="media-add form-group">
+      <label class="col-lg-2 control-label text-right">{{t 'Insert Media'}}</label>
+      <div class="col-lg-10">
+      {{#each mediaOptions as |mediaOption|}}
+        <button {{action 'addMedia' data mediaOption.type}} type="button" class="btn">
+          <i class="fa {{mediaOption.icon}}"></i>
+          <span>{{t mediaOption.name}}</span>
+        </button>
+      {{/each}}
+      </div>
+    </div>
+  {{/tab.pane}}
+
+  {{#tab.pane elementId=(concat 'action-timer-' data.orderId) title=(t 'Timer')}}
+    <div class="form-group no-margin-bottom mb-10">
+      <label class="col-lg-2 control-label text-right">{{t 'Timer'}}</label>
+      <div class="col-lg-10">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+          {{input class="form-control" placeholder=(t "Enter timer value here…") value=data.timer}}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group no-margin-bottom mb-10">
+      <label class="col-lg-2 control-label text-right">{{t 'Additional Time'}}</label>
+      <div class="col-lg-10">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+          {{input class="form-control" placeholder=(t "Enter additional time value here…") value=data.additionalTime}}
+        </div>
+      </div>
+    </div>
+  {{/tab.pane}}
+  </div>
+{{/bs-tab}}

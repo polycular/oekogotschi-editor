@@ -1,0 +1,9 @@
+<div class="form-group">
+  <label class="col-lg-2 control-label text-right">{{t 'Text'}}</label>
+  <div class="col-lg-10">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="icon-paragraph-left2"></i></span>
+      {{textarea focus-out=(action 'setDirty') rows="5" cols="5" class="form-control" value=data.text placeholder=(t "Enter text here...")}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,967 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: clustar\n"
+"POT-Creation-Date: 2016-09-19 19:33+0200\n"
+"PO-Revision-Date: 2016-09-19 19:38+0200\n"
+"Last-Translator: Hannes Moser <hannes@impossiblearts.com>\n"
+"Language-Team: Hannes Moser <hannes@impossiblearts.com>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.8\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _t;t\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: components/p-affix.js:14
+msgid "top"
+msgstr ""
+
+#: components/p-affix.js:15
+msgid "bottom"
+msgstr ""
+
+#: components/p-campaign-item.js:12
+msgid "data.state"
+msgstr ""
+
+#: components/p-campaign-item.js:28 components/p-campaign-item.js:32
+#: components/p-node.js:18 components/p-node.js:22
+msgid "hasControls"
+msgstr ""
+
+#: components/p-campaign-status-toggle.js:6
+#: components/p-campaign-status-toggle.js:10
+#: components/p-campaign-status-toggle.js:14
+#: components/p-campaign-status-toggle.js:18
+#: components/p-campaign-status-toggle.js:22
+msgid "campaign.state"
+msgstr ""
+
+#: components/p-campaign-status-toggle.js:27
+msgid "state"
+msgstr ""
+
+#: components/p-component-character-speechbubble.js:9
+#: components/p-component-multiquiz.js:9 controllers/campaigns/edit.js:90
+#: controllers/campaigns/edit.js:97
+msgid "hasDirtyAttributes"
+msgstr ""
+
+#: components/p-component-character-speechbubble.js:19
+#: components/p-component-character-speechbubble.js:26
+#: components/p-component-multiquiz.js:19
+#: components/p-component-multiquiz.js:32
+#: components/p-component-multiquiz.js:38 components/p-components.js:46
+
+#: components/p-component-character-speechbubble.js:20
+#: components/p-component-character-speechbubble.js:27
+msgid "texts"
+msgstr ""
+
+#: components/p-component-character-speechbubble.js:21
+#: components/p-component-character-speechbubble.js:28
+msgid "urls"
+msgstr "URLs"
+
+#: components/p-component-location.js:14
+msgid "gMap"
+msgstr ""
+
+#: components/p-component-location.js:16 components/p-component-location.js:33
+#: components/p-component-location.js:44 components/p-component-location.js:48
+#: components/p-component-location.js:59 components/p-component-location.js:68
+msgid "data.latitude"
+msgstr ""
+
+#: components/p-component-location.js:17 components/p-component-location.js:37
+#: components/p-component-location.js:45 components/p-component-location.js:49
+#: components/p-component-location.js:60 components/p-component-location.js:69
+msgid "data.longitude"
+msgstr ""
+
+#: components/p-component-location.js:61
+msgid "data.radius"
+msgstr ""
+
+#: components/p-component-multiquiz.js:20
+msgid "correct"
+msgstr ""
+
+#: components/p-component-multiquiz.js:33
+#: components/p-component-multiquiz.js:39
+msgid "answers"
+msgstr ""
+
+#: components/p-components.js:55 components/p-components.js:66
+#: components/p-components.js:67
+msgid "type"
+msgstr ""
+
+#: components/p-components.js:59
+msgid "orderId"
+msgstr ""
+
+#: components/p-contenteditable.js:10
+msgid "placeholder"
+msgstr ""
+
+#: components/p-contenteditable.js:11
+msgid "value"
+msgstr ""
+
+#: components/p-list-node.js:10
+msgid "sort"
+msgstr ""
+
+#: components/p-node.js:32
+msgid "collapsed"
+msgstr ""
+
+#: components/p-pagination.js:10 components/p-pagination.js:20
+msgid "padding"
+msgstr ""
+
+#: components/p-pagination.js:14
+msgid "total"
+msgstr ""
+
+#: components/p-pagination.js:14
+msgid "size"
+msgstr ""
+
+#: components/p-pagination.js:18 components/p-pagination.js:35
+#: components/p-pagination.js:40 components/p-pagination.js:47
+msgid "max"
+msgstr ""
+
+#: components/p-pagination.js:19 components/p-pagination.js:29
+#: components/p-pagination.js:34 components/p-pagination.js:45
+#: components/p-pagination.js:57 components/p-pagination.js:59
+#: components/p-pagination.js:62 controllers/clients/index.js:15
+#: controllers/logs.js:10 controllers/templates/index.js:10
+#: controllers/users/index.js:12
+msgid "page"
+msgstr ""
+
+#: components/p-pagination.js:46
+msgid "amount"
+msgstr ""
+
+#: components/p-pagination.js:48
+msgid "offset"
+msgstr ""
+
+#: components/p-sidebar.js:79
+msgid ".active, .category-title"
+msgstr ""
+
+#: components/p-sidebar.js:100
+msgid ":has(.has-ul)"
+msgstr ""
+
+#: components/p-sidebar.js:118 components/p-sidebar.js:131
+msgid "li"
+msgstr ""
+
+#: components/p-sidebar.js:119 components/p-sidebar.js:132
+msgid ".disabled"
+msgstr ""
+
+#: components/p-sidebar.js:121 components/p-sidebar.js:134
+msgid ".sidebar-xs-indicator"
+msgstr ""
+
+#: components/p-upload.js:9
+msgid "url"
+msgstr ""
+
+#: components/p-upload.js:13
+msgid "progress"
+msgstr ""
+
+#: components/p-upload.js:17 controllers/login.js:20
+msgid "error"
+msgstr ""
+
+#: controllers/campaigns/edit.js:38 controllers/campaigns/edit.js:48
+#: controllers/campaigns/edit.js:58
+msgid "store"
+msgstr ""
+
+#: controllers/campaigns/edit.js:39 controllers/campaigns/edit.js:59
+msgid "model.campaign.nodes"
+msgstr ""
+
+#: controllers/campaigns/edit.js:40 controllers/campaigns/edit.js:60
+msgid "model.campaign.first"
+msgstr ""
+
+#: controllers/campaigns/edit.js:52
+msgid "model.campaign.nodes.length"
+msgstr ""
+
+#: controllers/campaigns/edit.js:67 controllers/campaigns/edit.js:88
+#: controllers/campaigns/edit.js:121 controllers/campaigns/edit.js:160
+#: controllers/campaigns/edit.js:182 controllers/campaigns/edit.js:194
+#: controllers/campaigns/edit.js:205
+msgid "graph"
+msgstr ""
+
+#: controllers/campaigns/edit.js:76 controllers/campaigns/edit.js:161
+#: controllers/campaigns/edit.js:162
+msgid "nodeToDestroy"
+msgstr ""
+
+#: controllers/campaigns/edit.js:81
+msgid "autoSave"
+msgstr ""
+
+#: controllers/campaigns/edit.js:87 controllers/campaigns/edit.js:122
+#: controllers/campaigns/edit.js:159 controllers/campaigns/edit.js:183
+msgid "model.campaign"
+msgstr ""
+
+#: controllers/campaigns/edit.js:92
+msgid "isNew"
+msgstr ""
+
+#: controllers/campaigns/edit.js:95
+msgid "components"
+msgstr ""
+
+#: controllers/campaigns/edit.js:103 controllers/campaigns/edit.js:113
+#: controllers/campaigns/edit.js:116
+msgid "isSaving"
+msgstr ""
+
+#: controllers/campaigns/edit.js:108 controllers/clients/index.js:29
+#: controllers/login.js:11 controllers/projects/edit.js:25
+#: controllers/projects/index.js:32 routes/application.js:9
+msgid "content"
+msgstr ""
+
+#: controllers/campaigns/edit.js:114
+msgid "lastSave"
+msgstr ""
+
+#: controllers/campaigns/edit.js:120
+msgid "i18n"
+msgstr ""
+
+#: controllers/campaigns/edit.js:124
+msgid "New Node"
+msgstr ""
+
+#: controllers/campaigns/edit.js:140 controllers/campaigns/edit.js:172
+#: controllers/campaigns/edit.js:175 controllers/campaigns/edit.js:188
+msgid "first"
+msgstr ""
+
+#: controllers/campaigns/edit.js:149
+msgid "model.templates"
+msgstr ""
+
+#: controllers/campaigns/edit.js:150
+msgid "model.componentGroups"
+msgstr ""
+
+#: controllers/clients/edit.js:23 controllers/projects/index.js:33
+#: controllers/projects/index.js:38
+msgid "model.client"
+msgstr ""
+
+#: controllers/clients/index.js:20 controllers/clients/index.js:36
+#: controllers/clients/index.js:37 controllers/projects/edit.js:16
+#: controllers/projects/edit.js:31 controllers/projects/edit.js:32
+msgid "modalModel"
+msgstr ""
+
+#: controllers/clients/index.js:28 controllers/projects/edit.js:23
+#: controllers/projects/index.js:30 models/user.js:17 modules/linked-list.js:78
+#: modules/linked-list.js:99 modules/linked-list.js:102
+#: modules/linked-list.js:112 modules/linked-list.js:190
+#: modules/linked-list.js:200
+msgid "name"
+msgstr ""
+
+#: controllers/clients/index.js:29 controllers/login.js:11
+#: controllers/projects/edit.js:25 controllers/projects/index.js:32
+#: routes/application.js:9 routes/projects/index.js:12
+msgid "currentUser"
+msgstr ""
+
+#: controllers/login.js:8 routes/application.js:6
+msgid "session.data.authenticated"
+msgstr ""
+
+#: controllers/login.js:18 routes/application.js:22 routes/application.js:27
+msgid "session"
+msgstr ""
+
+#: controllers/projects/edit.js:11
+msgid "model.project.campaigns"
+msgstr ""
+
+#: controllers/projects/edit.js:24 controllers/projects/edit.js:38
+msgid "model.project"
+msgstr ""
+
+#: controllers/projects/index.js:11
+msgid "model.client.id"
+msgstr ""
+
+#: controllers/projects/index.js:12
+msgid "model.projects"
+msgstr ""
+
+#: controllers/projects/index.js:17
+msgid "client.id"
+msgstr ""
+
+#: controllers/projects/index.js:31
+msgid "description"
+msgstr ""
+
+#: controllers/projects/index.js:39
+msgid "clientId"
+msgstr ""
+
+#: controllers/templates/edit.js:9 controllers/templates/edit.js:20
+msgid "model.definition"
+msgstr ""
+
+#: controllers/templates/edit.js:31 controllers/templates/edit.js:32
+msgid "model.active"
+msgstr ""
+
+#: controllers/templates/edit.js:36 controllers/users/edit.js:71
+msgid "model"
+msgstr ""
+
+#: controllers/users/edit.js:32 controllers/users/edit.js:36
+#: controllers/users/edit.js:38 controllers/users/edit.js:45
+#: controllers/users/edit.js:49 controllers/users/edit.js:51
+#: controllers/users/edit.js:58 controllers/users/edit.js:62
+#: controllers/users/edit.js:64
+msgid "model.birthday"
+msgstr ""
+
+#: controllers/users/edit.js:46
+msgid "months"
+msgstr ""
+
+#: controllers/users/index.js:16 templates/users/index.hbs:28
+msgid "filter"
+msgstr ""
+
+#: initializers/current-user.js:10
+msgid "route"
+msgstr ""
+
+#: initializers/current-user.js:11
+msgid "controller"
+msgstr ""
+
+#: initializers/current-user.js:12
+msgid "component"
+msgstr ""
+
+#: models/user.js:17 templates/login.hbs:22
+msgid "email"
+msgstr ""
+
+#: models/user.js:17 modules/graph.js:12 modules/graph.js:32
+#: modules/graph.js:37 modules/graph.js:45 modules/graph.js:55
+#: modules/linked-list.js:67 modules/linked-list.js:86
+msgid "id"
+msgstr ""
+
+#: modules/component.js:14
+msgid "${name}"
+msgstr ""
+
+#: modules/component.js:17
+msgid "definition"
+msgstr ""
+
+#: modules/graph.js:17 modules/graph.js:86 modules/linked-list.js:73
+#: modules/linked-list.js:89 modules/linked-list.js:94
+#: modules/linked-list.js:108 modules/linked-list.js:186
+#: modules/linked-list.js:196
+msgid "transitions.firstObject"
+msgstr ""
+
+#: modules/graph.js:22 modules/graph.js:88 modules/linked-list.js:74
+#: modules/linked-list.js:109 modules/linked-list.js:187
+msgid "next"
+msgstr ""
+
+#: modules/graph.js:33 modules/linked-list.js:10
+msgid "length"
+msgstr ""
+
+#: modules/linked-list.js:14
+msgid "firstObject"
+msgstr ""
+
+#: modules/linked-list.js:18
+msgid "lastObject"
+msgstr ""
+
+#: modules/linked-list.js:64
+msgid "transitions.length"
+msgstr ""
+
+#: modules/linked-list.js:70 modules/linked-list.js:90
+msgid "transitions"
+msgstr ""
+
+#: routes/application.js:14
+msgid "session.isAuthenticated"
+msgstr ""
+
+#: routes/projects/edit.js:16
+msgid "DD-MM-YYYY"
+msgstr ""
+
+#: routes/projects/edit.js:25
+msgid "session.currentProject"
+msgstr ""
+
+#: routes/projects/index.js:20
+msgid "clients.firstObject"
+msgstr ""
+
+#: templates/api.hbs:4 templates/api.hbs:14
+#: templates/components/p-container.hbs:41
+msgid "API"
+msgstr ""
+
+#: templates/api.hbs:11 templates/campaigns/edit.hbs:26
+#: templates/clients/edit.hbs:11 templates/clients/index.hbs:11
+#: templates/components/p-container.hbs:9
+#: templates/components/p-navbar-header.hbs:1 templates/help.hbs:11
+#: templates/login.hbs:4 templates/logs.hbs:11 templates/projects/edit.hbs:26
+#: templates/projects/index.hbs:23 templates/templates/edit.hbs:14
+#: templates/templates/index.hbs:11 templates/users/edit.hbs:14
+#: templates/users/index.hbs:11
+msgid "index"
+msgstr ""
+
+#: templates/api.hbs:12 templates/campaigns/edit.hbs:27
+#: templates/clients/edit.hbs:12 templates/clients/index.hbs:12
+#: templates/help.hbs:12 templates/logs.hbs:12 templates/projects/edit.hbs:27
+#: templates/projects/index.hbs:24 templates/templates/edit.hbs:15
+#: templates/templates/index.hbs:12 templates/users/edit.hbs:15
+#: templates/users/index.hbs:12
+msgid "Home"
+msgstr ""
+
+#: templates/application.hbs:13
+msgid "My Profile"
+msgstr ""
+
+#: templates/application.hbs:17
+msgid "logout"
+msgstr ""
+
+#: templates/application.hbs:17
+msgid "Logout"
+msgstr ""
+
+#: templates/application.hbs:30
+msgid "modal"
+msgstr ""
+
+#: templates/campaigns/edit.hbs:5
+msgid "Edit Tour"
+msgstr ""
+
+#: templates/campaigns/edit.hbs:12
+msgid "Switch Campaign"
+msgstr ""
+
+#: templates/campaigns/edit.hbs:29 templates/components/p-container.hbs:14
+#: templates/projects/edit.hbs:29 templates/users/edit.hbs:113
+msgid "projects.index"
+msgstr ""
+
+#: templates/campaigns/edit.hbs:29 templates/components/p-container.hbs:16
+#: templates/projects/edit.hbs:29 templates/projects/index.hbs:4
+#: templates/projects/index.hbs:26
+msgid "Projects"
+msgstr ""
+
+#: templates/campaigns/edit.hbs:43
+msgid "The graph is not a valid linked list and cannot be edited."
+msgstr ""
+
+#: templates/campaigns/edit.hbs:72
+msgid ""
+"Are you 100% sure that you wanna do this? Deleting a node cannot be undone."
+msgstr ""
+
+#: templates/campaigns/edit.hbs:99
+msgid "Nodes"
+msgstr ""
+
+#: templates/campaigns/edit.hbs:103
+msgid "ul"
+msgstr ""
+
+#: templates/campaigns/edit.hbs:117
+msgid "btn btn-primary btn-block"
+msgstr ""
+
+#: templates/campaigns/edit.hbs:118 templates/clients/edit.hbs:60
+msgid "Save"
+msgstr ""
+
+#: templates/campaigns/edit.hbs:125
+msgid "Last saved at"
+msgstr ""
+
+#: templates/campaigns/edit.hbs:125
+msgid "HH:mm"
+msgstr ""
+
+#: templates/campaigns/edit.hbs:128
+msgid "Auto-Save is"
+msgstr ""
+
+#: templates/campaigns/edit.hbs:129
+msgid "toggleAutoSave"
+msgstr ""
+
+#: templates/clients/edit.hbs:4 templates/clients/edit.hbs:17
+#: templates/clients/index.hbs:4 templates/clients/index.hbs:15
+#: templates/clients/index.hbs:25 templates/components/p-container.hbs:21
+msgid "Clients"
+msgstr ""
+
+#: templates/clients/edit.hbs:16
+msgid "clients"
+msgstr ""
+
+#: templates/clients/edit.hbs:31
+msgid "Client"
+msgstr ""
+
+#: templates/clients/edit.hbs:35 templates/templates/edit.hbs:38
+#: templates/users/edit.hbs:33
+msgid "save"
+msgstr ""
+
+#: templates/clients/edit.hbs:37
+msgid "Edit client"
+msgstr ""
+
+#: templates/clients/edit.hbs:40 templates/clients/index.hbs:33
+msgid "Key"
+msgstr ""
+
+#: templates/clients/edit.hbs:45
+msgid "Creator"
+msgstr ""
+
+#: templates/clients/edit.hbs:52
+msgid "Editors"
+msgstr ""
+
+#: templates/clients/index.hbs:32 templates/templates/edit.hbs:43
+#: templates/templates/index.hbs:33 templates/users/edit.hbs:45
+#: templates/users/index.hbs:43
+msgid "Name"
+msgstr ""
+
+#: templates/clients/index.hbs:34 templates/login.hbs:42
+msgid "text-center"
+msgstr ""
+
+#: templates/clients/index.hbs:35
+msgid "Owner"
+msgstr ""
+
+#: templates/clients/index.hbs:36 templates/templates/index.hbs:37
+msgid "Created"
+msgstr ""
+
+#: templates/clients/index.hbs:37
+msgid "text-right"
+msgstr ""
+
+#: templates/clients/index.hbs:60 templates/projects/edit.hbs:45
+#: templates/users/index.hbs:58
+msgid "LL"
+msgstr ""
+
+#: templates/clients/index.hbs:83 templates/projects/edit.hbs:55
+#: templates/projects/edit.hbs:65 templates/projects/index.hbs:36
+msgid "openModal"
+msgstr ""
+
+#: templates/clients/index.hbs:85
+msgid "Add Client"
+msgstr ""
+
+#: templates/clients/index.hbs:115
+msgid ""
+"Are you 100% sure that you wanna do this? Deleting a client cannot be undone."
+msgstr ""
+
+#: templates/components/p-campaign-item.hbs:15
+msgid "remove"
+msgstr ""
+
+#: templates/components/p-campaign-status-toggle.hbs:4
+#: templates/components/p-campaign-status-toggle.hbs:8
+#: templates/components/p-campaign-status-toggle.hbs:12
+#: templates/components/p-campaign-status-toggle.hbs:16
+#: templates/components/p-campaign-status-toggle.hbs:19
+#: templates/components/p-campaign-status-toggle.hbs:23
+#: templates/components/p-campaign-status-toggle.hbs:27
+msgid "changeCampaignState"
+msgstr ""
+
+#: templates/components/p-component-character-speechbubble.hbs:3
+msgid "Text"
+msgstr ""
+
+#: templates/components/p-component-character-speechbubble.hbs:13
+msgid "URL"
+msgstr ""
+
+#: templates/components/p-component-character-speechbubble.hbs:25
+msgid "Remove Bubble"
+msgstr ""
+
+#: templates/components/p-component-character-speechbubble.hbs:35
+msgid "button"
+msgstr ""
+
+#: templates/components/p-component-character-speechbubble.hbs:36
+msgid "Add Bubble"
+msgstr ""
+
+#: templates/components/p-component-game.hbs:2
+msgid "Nothing todo."
+msgstr ""
+
+#: templates/components/p-component-location-riddle.hbs:2
+msgid "Location Riddle"
+msgstr ""
+
+#: templates/components/p-component-location-riddle.hbs:12
+msgid "Hint"
+msgstr ""
+
+#: templates/components/p-component-location.hbs:8
+msgid "Address"
+msgstr ""
+
+#: templates/components/p-component-location.hbs:18
+msgid "Latitude"
+msgstr ""
+
+#: templates/components/p-component-location.hbs:22
+#: templates/components/p-component-location.hbs:30
+msgid "form-control"
+msgstr ""
+
+#: templates/components/p-component-location.hbs:26
+msgid "Longitude"
+msgstr ""
+
+#: templates/components/p-component-multiquiz.hbs:2
+msgid "Quiz Question"
+msgstr ""
+
+#: templates/components/p-component-multiquiz.hbs:13
+msgid "Answer"
+msgstr ""
+
+#: templates/components/p-component-multiquiz.hbs:19
+msgid "checkbox"
+msgstr ""
+
+#: templates/components/p-component-multiquiz.hbs:35
+msgid "addAnswer"
+msgstr ""
+
+#: templates/components/p-component-multiquiz.hbs:36
+msgid "Add Answer"
+msgstr ""
+
+#: templates/components/p-container.hbs:7
+msgid "Admin"
+msgstr ""
+
+#: templates/components/p-container.hbs:11
+msgid "Dashboard"
+msgstr ""
+
+#: templates/components/p-container.hbs:19
+msgid "clients.index"
+msgstr ""
+
+#: templates/components/p-container.hbs:25
+msgid "users.index"
+msgstr ""
+
+#: templates/components/p-container.hbs:27 templates/users/index.hbs:4
+#: templates/users/index.hbs:14 templates/users/index.hbs:25
+msgid "Users"
+msgstr ""
+
+#: templates/components/p-container.hbs:32
+msgid "Documentation"
+msgstr ""
+
+#: templates/components/p-container.hbs:34
+msgid "help"
+msgstr ""
+
+#: templates/components/p-container.hbs:36 templates/help.hbs:4
+#: templates/help.hbs:14 templates/help.hbs:24
+msgid "Help"
+msgstr ""
+
+#: templates/components/p-container.hbs:39
+msgid "api"
+msgstr ""
+
+#: templates/components/p-container.hbs:44 templates/templates/edit.hbs:18
+msgid "templates"
+msgstr ""
+
+#: templates/components/p-container.hbs:46 templates/templates/edit.hbs:19
+#: templates/templates/index.hbs:4 templates/templates/index.hbs:14
+#: templates/templates/index.hbs:25
+msgid "Templates"
+msgstr ""
+
+#: templates/components/p-container.hbs:49
+msgid "logs"
+msgstr ""
+
+#: templates/components/p-container.hbs:51 templates/logs.hbs:4
+#: templates/logs.hbs:14 templates/logs.hbs:25
+msgid "Logs"
+msgstr ""
+
+#: templates/components/p-footer.hbs:2
+msgid "made with"
+msgstr ""
+
+#: templates/components/p-footer.hbs:2
+msgid "by"
+msgstr ""
+
+#: templates/components/p-node.hbs:8
+msgid "moveUp"
+msgstr ""
+
+#: templates/components/p-node.hbs:11
+msgid "moveDown"
+msgstr ""
+
+#: templates/components/p-node.hbs:18
+msgid "toggleCollapse"
+msgstr ""
+
+#: templates/components/p-pagination.hbs:4
+msgid "First"
+msgstr ""
+
+#: templates/components/p-pagination.hbs:8
+#: templates/components/p-pagination.hbs:18
+#: templates/components/p-pagination.hbs:36
+#: templates/components/p-pagination.hbs:46
+msgid "goto"
+msgstr ""
+
+#: templates/components/p-pagination.hbs:14
+#: templates/components/p-pagination.hbs:18
+msgid "Prev"
+msgstr ""
+
+#: templates/components/p-pagination.hbs:22
+msgid "active"
+msgstr ""
+
+#: templates/components/p-pagination.hbs:32
+#: templates/components/p-pagination.hbs:36
+msgid "Next"
+msgstr ""
+
+#: templates/components/p-pagination.hbs:42
+msgid "Last"
+msgstr ""
+
+#: templates/login.hbs:13
+msgid "authenticate"
+msgstr ""
+
+#: templates/login.hbs:29 templates/users/edit.hbs:56
+msgid "password"
+msgstr ""
+
+#: templates/logs.hbs:33
+msgid "Messag"
+msgstr ""
+
+#: templates/logs.hbs:34
+msgid "Created At"
+msgstr ""
+
+#: templates/page-not-found.hbs:6
+msgid "Sorry, page not found"
+msgstr ""
+
+#: templates/projects/edit.hbs:5
+msgid "Edit Project"
+msgstr ""
+
+#: templates/projects/edit.hbs:12
+msgid "Switch Project"
+msgstr ""
+
+#: templates/projects/edit.hbs:56
+msgid "Create Campaign"
+msgstr ""
+
+#: templates/projects/edit.hbs:65
+msgid "Delete Project"
+msgstr ""
+
+#: templates/projects/edit.hbs:82
+msgid ""
+"Are you 100% sure that you wanna do this? Deleting a project cannot be "
+"undone."
+msgstr ""
+
+#: templates/projects/edit.hbs:86 templates/projects/edit.hbs:107
+msgid "close"
+msgstr ""
+
+#: templates/projects/edit.hbs:87 templates/projects/edit.hbs:108
+#: templates/templates/edit.hbs:53 templates/templates/edit.hbs:55
+#: templates/templates/edit.hbs:57 templates/users/edit.hbs:97
+msgid "submit"
+msgstr ""
+
+#: templates/projects/edit.hbs:87 templates/projects/edit.hbs:108
+msgid "Delete it!"
+msgstr ""
+
+#: templates/projects/edit.hbs:103
+msgid ""
+"Are you 100% sure that you wanna do this? Deleting a campaign cannot be "
+"undone."
+msgstr ""
+
+#: templates/projects/index.hbs:9
+msgid "Switch Client"
+msgstr ""
+
+#: templates/projects/index.hbs:48
+msgid "New Project"
+msgstr ""
+
+#: templates/projects/index.hbs:56
+msgid "No client selected. Please select one on the top right of the page."
+msgstr ""
+
+#: templates/projects/index.hbs:67 templates/projects/index.hbs:70
+#: templates/projects/index.hbs:78
+msgid "projects.edit"
+msgstr ""
+
+#: templates/projects/index.hbs:96
+msgid "textarea"
+msgstr ""
+
+#: templates/templates/edit.hbs:5 templates/templates/edit.hbs:35
+msgid "Template"
+msgstr ""
+
+#: templates/templates/edit.hbs:40 templates/users/edit.hbs:30
+msgid "Settings"
+msgstr ""
+
+#: templates/templates/edit.hbs:44 templates/users/edit.hbs:46
+#: templates/users/edit.hbs:51
+msgid "text"
+msgstr ""
+
+#: templates/templates/edit.hbs:48
+msgid "Definition"
+msgstr ""
+
+#: templates/templates/edit.hbs:53 templates/templates/edit.hbs:55
+msgid "toggleActive"
+msgstr ""
+
+#: templates/templates/index.hbs:34
+msgid "Type"
+msgstr ""
+
+#: templates/templates/index.hbs:35
+msgid "Active"
+msgstr ""
+
+#: templates/templates/index.hbs:36
+msgid "Updated"
+msgstr ""
+
+#: templates/users/edit.hbs:5 templates/users/edit.hbs:17
+msgid "Your Profile"
+msgstr ""
+
+#: templates/users/edit.hbs:35
+msgid "Personal data"
+msgstr ""
+
+#: templates/users/edit.hbs:39
+msgid "Your unique ID:"
+msgstr ""
+
+#: templates/users/edit.hbs:50
+msgid "Email address"
+msgstr ""
+
+#: templates/users/edit.hbs:55
+msgid "Password"
+msgstr ""
+
+#: templates/users/edit.hbs:62
+msgid "Birthday"
+msgstr ""
+
+#: templates/users/edit.hbs:91
+msgid "Gender"
+msgstr ""
+
+#: templates/users/edit.hbs:108
+msgid "Info"
+msgstr ""
+
+#: templates/users/edit.hbs:112
+msgid "You are currently enrolled in"
+msgstr ""
+
+#: templates/users/edit.hbs:113
+msgid "client(s)"
+msgstr ""
+
+#: templates/users/index.hbs:44
+msgid "Email"
+msgstr ""
+
+#: templates/users/index.hbs:45
+msgid "Joined"
+msgstr ""

@@ -1,0 +1,185 @@
+{{#if isSaving}}
+<div class='loading-indicator'></div>
+{{/if}}
+
+<div class="page-header">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h1>
+        <span class="text-muted">{{t 'Edit Tour'}}</span>
+        {{model.campaign.name}}
+      </h1>
+    </div>
+
+    <div class="heading-elements">
+      <form class="heading-form" action="#">
+        <span class="heading-text">{{t 'Switch Campaign'}}</span>
+        <div class="form-group heading-form">
+          {{#power-select options=model.campaign.project.campaigns selected=model.campaign searchEnabled=false onchange=(action 'redirect') as |campaign|}}
+            {{campaign.name}}
+          {{/power-select}}
+        </div>
+      </form>
+    </div>
+    <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+  </div>
+
+  <div class="breadcrumb-line breadcrumb-line-component">
+    <ul class="breadcrumb">
+      <li>
+        {{#link-to 'index'}}
+          <i class="icon-home2 position-left"></i> {{t 'Home'}}{{/link-to}}
+      </li>
+      <li>{{#link-to 'projects.index'}}{{t 'Projects'}}{{/link-to}}</li>
+      <li>{{#link-to 'projects.edit' model.campaign.project.id}}{{model.campaign.project.name}}{{/link-to}}</li>
+      <li class="active">{{model.campaign.name}}</li>
+    </ul>
+    <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+  </div>
+</div>
+
+<div class="content">
+  <div class="container-detached col-md-9">
+    <div class="content-detached {{if isSaving ' saving'}}">
+      {{#unless isLinkedList}}
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="alert alert-danger alert-styled-left alert-arrow-left alert-component">{{t 'The graph is not a valid linked list and cannot be edited.'}}</div>
+          </div>
+        </div>
+      {{/unless}}
+      <div class="row">
+        <div class="col-sm-12">
+          {{#p-campaign}}
+            {{#each list as |node index|}}
+              {{#p-node
+                data=node
+                sort=(action 'sortList')
+                opened=(eq collapsedNode node)
+                setCollapsedNode=(action 'setCollapsedNode' node)
+                addComponent=(action 'addComponent' node)
+                remove=(action 'openModal' 'openDestroyNodeModal' node.id)
+                moveUp=(action 'moveUp' node index)
+                moveDown=(action 'moveDown' node index)
+                save=(action 'save')
+              }}
+                {{p-components data=node.components}}
+              {{/p-node}}
+            {{/each}}
+
+            {{#bs-modal title=(t 'Delete Node') open=openDestroyNodeModal onHide=(action 'toggleModal' 'openDestroyNodeModal') onSubmit=(action 'deleteNode' 'openDestroyNodeModal')as |modal|}}
+              {{#modal.body}}
+                <p class="text-muted">
+                  {{t 'Are you 100% sure that you wanna do this? Deleting a node cannot be undone.'}}
+                </p>
+              {{/modal.body}}
+              {{modal.footer closeTitle=(t 'Cancel') submitTitle=(t 'Delete it!')}}
+            {{/bs-modal}}
+
+            {{#unless list}}
+              {{p-how-to title='Getting started - create your first node now!'}}
+            {{/unless}}
+
+            <div class="timeline-date text-muted">
+              <button {{action 'addEmptyNode'}} type="button" class="btn btn-float btn-float-lg button-add-node">
+                <i class="fa fa-dot-circle-o"></i>
+                <span>{{t 'Insert Node'}}</span>
+              </button>
+            </div>
+            {{#if model.templates}}
+            <div class="timeline-date text-muted">
+              <div id="template-buttons">
+                <p>{{t 'inserte node via predefined template'}}</p>
+                {{#each model.templates as |template|}}
+                <button {{action 'addTemplateNode' template.name}} type="button">
+                  <i class="{{icon template.name}}"></i>
+                  <span>{{t template.name}}</span>
+                </button>
+                {{/each}}
+              </div>
+            </div>
+            {{/if}}
+
+          {{/p-campaign}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    {{#p-panel title=(t 'Fast Switch') class='panel-default'}}
+      <ul class="nav nav-pills nav-stacked nav-pills-bordered">
+        <li class="active">
+          {{#link-to 'campaigns.edit' model.campaign.id}}
+            <i class="icon-pencil position-left"></i>{{t 'Campaign'}}
+          {{/link-to}}
+        </li>
+        <li>
+          {{#link-to 'campaigns.settings' model.campaign.id}}
+            <i class="icon-cog position-left"></i>{{t 'Settings'}}
+          {{/link-to}}
+        </li>
+        <li>
+          <a {{action 'toggleQR'}}><i class="icon-mobile position-left"></i>{{t 'Test campaign'}}</a>
+        </li>
+      </ul>
+      {{#bs-modal title=(t 'Test campaign') open=showQR onHide=(action 'toggleQR') as |modal|}}
+        {{#modal.body}}
+          <p>{{t 'Scan the QR-Code below with your Clustar App on your Smartphone or Tablet to start the campaign test.'}}</p>
+          <div class="qr-code">
+             {{qr-code text=model.campaign.id width=512 height=512}}
+          </div>
+        {{/modal.body}}
+        {{modal.footer}}
+      {{/bs-modal}}
+    {{/p-panel}}
+
+    {{#p-panel title=(t 'Node order') collapsed=true class='panel-default sidebar-default'}}
+      <div class="category-content no-padding">
+        <p class="text-muted">{{t 'drag and drop to change the order'}}:</p>
+        {{#p-sortable tagName='ul' class='nav navigation'}}
+          {{#each list as |node|}}
+            {{#p-list-node data=node sort=(action 'sortList') }}
+              <a class="truncate">
+                <i class=" text-muted fa fa-ellipsis-v"></i> {{node.name}}
+              </a>
+            {{/p-list-node}}
+          {{/each}}
+        {{/p-sortable}}
+      </div>
+    {{/p-panel}}
+
+    {{#p-panel title=(t 'Reports') collapsed=true class='panel-default'}}
+      <ul class="nav nav-pills nav-stacked nav-pills-bordered">
+        <li>
+          <a href="{{reportsDownloadUrl}}" download>{{t 'Download'}}
+            <span class="text-mute">(.xlsx)</span>
+          </a>
+        </li>
+      </ul>
+    {{/p-panel}}
+
+    <div class="panel-default panel">
+      <div class="category-content">
+        <button class="btn btn-primary btn-block" {{action 'save'}}>
+          {{t 'Save'}}
+          {{#if isSaving}}
+            <span class="spinner"></span>
+          {{/if}}
+        </button>
+        <br>
+        <p class="text-muted text-center">
+          {{t 'Last saved at'}} {{format-date lastSave format='HH:mm'}}
+        </p>
+
+        <p>
+          <label for='auto-save'>{{t 'Auto-Save'}}</label><br>
+          <label class='switch'>
+            <input id='auto-save' type='checkbox' checked={{autoSave}} onChange={{action 'toggleAutoSave' value='target.checked'}} />
+            <span class='slider'></span>
+          </label>
+          {{#if autoSave}}<span class='active'>{{t 'On'}}</span>{{/if}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

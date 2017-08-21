@@ -1,0 +1,188 @@
+<div class="page-header">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h1>
+        <span class="text-muted">{{t 'Edit Tour'}}</span>
+        {{model.campaign.name}}
+      </h1>
+    </div>
+
+    <div class="heading-elements">
+      <form class="heading-form" action="#">
+        <span class="heading-text">{{t 'Switch Campaign'}}</span>
+        <div class="form-group heading-form">
+          {{#power-select options=model.campaign.project.campaigns selected=model.campaign searchEnabled=false onchange=(action 'redirect') as |campaign|}}
+            {{campaign.name}}
+          {{/power-select}}
+        </div>
+      </form>
+    </div>
+    <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+  </div>
+
+  <div class="breadcrumb-line breadcrumb-line-component">
+    <ul class="breadcrumb">
+      <li>
+        {{#link-to 'index'}}
+          <i class="icon-home2 position-left"></i> {{t 'Home'}}{{/link-to}}
+      </li>
+      <li>{{#link-to 'projects.index'}}{{t 'Projects'}}{{/link-to}}</li>
+      <li>{{#link-to 'projects.edit' model.campaign.project.id}}{{model.campaign.project.name}}{{/link-to}}</li>
+      <li class="active">{{model.campaign.name}}</li>
+    </ul>
+    <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+  </div>
+</div>
+
+<div class="content">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="panel panel-flat">
+        <div class="panel-heading">
+          <h5 class="panel-title">
+            <span class="text-muted">{{t 'Campaign'}} -</span> {{model.campaign.name}}
+          </h5>
+        </div>
+        <div class="panel-body">
+          <form>
+            <fieldset class="content-group">
+              <legend class="text-bold">{{t 'Edit Campaign'}}</legend>
+
+              <div class="form-group">
+                <label>{{t 'Campaign'}}</label>
+                {{input type='text' class='form-control' value=model.campaign.name maxlength=30}}
+              </div>
+
+              <div class="form-group">
+                <label for='state'>{{t 'Publish'}}</label><br>
+                <label class='switch'>
+                  <input id='state' type='checkbox' checked={{if (eq model.campaign.state 'published') 'true'}} onChange={{action 'toggleState' value='target.checked'}} />
+                  <span class='slider'></span>
+                </label>
+                {{#if (eq model.campaign.state 'published')}}<span class='active'>{{t 'Active'}}</span>{{/if}}
+                {{#if (eq model.campaign.state 'draft')}}<span>{{t 'Draft'}}</span>{{/if}}
+              </div>
+
+              <div class="form-group">
+                <label>{{t 'Description'}}</label>
+                {{textarea class='form-control vertical-resize' value=model.campaign.description}}
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label>{{t 'Start'}}</label>
+                  {{bootstrap-datepicker-inline value=model.campaign.start language=(t "lang") class="datepicker-box"}}
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label>{{t 'End'}}</label>
+                  {{bootstrap-datepicker-inline value=model.campaign.end language=(t "lang") class="datepicker-box"}}
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>{{t 'Duration (in hours)'}}</label>
+                {{input type='number' min=0.0 class='form-control' step=0.1 value=model.campaign.duration}}
+              </div>
+
+              <div class="form-group">
+                <label>{{t 'Length (in kilometers)'}}</label>
+                {{input type='number' min=0.0 class='form-control' step=0.1 value=model.campaign.length}}
+              </div>
+
+              <div class="form-group">
+                <label>{{t 'Logo'}}</label>
+                <div class="thumbnail" style="max-width:450px">
+                  {{#p-upload url=(concat (api) "/files") class='thumb' success=(action 'addCampaignLogo')}}
+                    {{#if model.campaign.logo}}
+                      <img src="{{media model.campaign.logo.id width=450 height=300}}" alt="Campaign Logo: {{model.campaign.name}}">
+                    {{else}}
+                      <img src="/images/campaign-placeholder.png" alt="Upload a campaign logo">
+                    {{/if}}
+                  {{/p-upload}}
+                  <div class="caption text-center">
+                    <span class="text-muted">{{t 'Click on logo to edit.'}}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>{{t 'GPX file upload'}}</label>
+                <input type="file" onchange={{action 'addGPX'}} accept=".gpx" />
+                {{#if model.campaign.gpx}}
+                  <i>{{t 'Current saved file'}}: {{model.campaign.gpx.name}}</i>
+                {{/if}}
+              </div>
+
+              <div class="form-group">
+                <label>{{t 'Language'}}</label>
+                <ul class="nav nav-pills nav-pills-toolbar">
+                  <li class={{if (eq model.campaign.language 'de') 'active'}}>
+                    <a {{action 'setLanguage' 'de'}}>{{t 'de'}}</a>
+                  </li>
+                  <li class={{if (eq model.campaign.language 'en') 'active'}}>
+                    <a {{action 'setLanguage' 'en'}}>{{t 'en'}}</a>
+                  </li>
+                </ul>
+              </div>
+
+              <hr>
+
+              <div class="form-group">
+                <h3 class='danger'>{{t 'Transfer campaign to new project'}}</h3>
+                <p>{{t 'Please select the project you want to transfer this campaign to in the dropdown below.'}}</p>
+
+                  <label class="text-bold">{{t 'Select new project'}}</label>
+                  {{#power-select options=model.campaign.project.client.projects selected=(if new_project new_project model.campaign.project) searchEnabled=false onchange=(action 'transfer_select') as |project|}}
+                    {{project.name}}
+                  {{/power-select}}
+                  <br>
+                  <button type='button' class='danger' onClick={{action 'transfer_confirm'}}>{{t 'Transfer campaign'}}</button>
+                  {{#if transfer_success}}<p class='success'>{{t 'Campaign successfully got transferred to project'}} <b>{{model.campaign.project.content.name}}</b>.</p>{{/if}}
+              </div>
+
+              <hr>
+
+              <div class="form-group">
+                <button class="btn btn-primary btn-block save" {{action 'save'}}>
+                  {{t 'Save'}}
+                  {{#if isSaving}}
+                    <i class="fa fa-spin fa-circle-o-notch"></i>
+                  {{/if}}
+                </button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      {{#p-panel title=(t 'Fast Switch') class='panel-default'}}
+        <ul class="nav nav-pills nav-stacked nav-pills-bordered">
+          <li>
+            {{#link-to 'campaigns.edit' model.campaign.id}}
+              <i class="icon-pencil position-left"></i>{{t 'Campaign'}}
+            {{/link-to}}
+          </li>
+          <li class="active">
+            {{#link-to 'campaigns.settings' model.campaign.id}}
+              <i class="icon-cog position-left"></i>{{t 'Settings'}}
+            {{/link-to}}
+          </li>
+          <li>
+            <a {{action 'toggleQR'}}><i class="icon-mobile position-left"></i>{{t 'Test campaign'}}</a>
+          </li>
+        </ul>
+        {{#bs-modal title=(t 'Test campaign') open=showQR onHide=(action 'toggleQR') as |modal|}}
+          {{#modal.body}}
+            <p>{{t 'Scan the QR-Code below with your Clustar App on your Smartphone or Tablet to start the campaign test.'}}</p>
+            <div class="qr-code">
+               {{qr-code text=model.campaign.id width=512 height=512}}
+            </div>
+          {{/modal.body}}
+          {{modal.footer}}
+        {{/bs-modal}}
+      {{/p-panel}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,120 @@
+<div class="page-header">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h1>
+        <span class="text-muted">{{t 'Your Profile'}}</span>
+        {{model.displayName}}
+      </h1>
+    </div>
+  </div>
+
+  <div class="breadcrumb-line breadcrumb-line-component">
+    <ul class="breadcrumb">
+      <li>
+        {{#link-to 'index'}}
+          <i class="icon-home2 position-left"></i> {{t 'Home'}}{{/link-to}}
+      </li>
+      <li class="active">{{t 'Your Profile'}}</li>
+    </ul>
+    <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="row">
+
+    <div class="col-md-6 col-sm-12">
+      <div class="panel panel-flat">
+        <div class="panel-heading">
+          <h5 class="panel-title">{{t 'Settings'}}</h5>
+        </div>
+        <div class="panel-body">
+          <form {{action 'save' on='submit'}}>
+            <fieldset class="content-group">
+              <legend class="text-bold">{{t 'Personal data'}}</legend>
+
+              <div class="form-group">
+                <p class="text-muted">
+                  {{t 'Your unique ID:'}}
+                  {{model.id}}
+                </p>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label">{{t 'Name'}}</label>
+                {{input type='text' value=model.name class='form-control'}}
+              </div>
+
+              <div class="form-group">
+                <label class="control-label">{{t 'Email address'}}</label>
+                {{input type='text' value=model.email class='form-control'}}
+              </div>
+
+              <div class="form-group">
+                <label class="control-label">{{t 'Password'}}</label>
+                {{input type='password' value=model.password class='form-control'}}
+              </div>
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label class="control-label">{{t 'Birthday'}}</label>
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          {{#power-select options=days selected=day searchEnabled=false onchange=(action (mut day)) as |day|}}
+                            {{day}}
+                          {{/power-select}}
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          {{#power-select options=months selected=month searchEnabled=false onchange=(action (mut month)) as |month|}}
+                            {{month}}
+                          {{/power-select}}
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          {{#power-select options=years selected=year searchEnabled=true onchange=(action (mut year)) as |year|}}
+                            {{year}}
+                          {{/power-select}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label">{{t 'Gender'}}</label>
+                {{#power-select options=gender selected=model.gender searchEnabled=false onchange=(action (mut model.gender)) as |gender|}}
+                  {{t gender}}
+                {{/power-select}}
+              </div>
+
+              <button type="submit" class="btn btn-primary">{{t 'Save'}}</button>
+
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-sm-12">
+      <div class="panel panel-flat">
+        <div class="panel-heading">
+          <h5 class="panel-title">{{t 'Info'}}</h5>
+        </div>
+        <div class="panel-body">
+          <p>
+            {{t 'You are currently enrolled in'}}
+            {{#link-to 'projects.index'}}{{model.clients.length}} {{t 'client(s)'}}{{/link-to}}.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

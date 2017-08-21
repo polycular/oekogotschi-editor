@@ -1,0 +1,206 @@
+{{#if isSaving}}
+<div class='loading-indicator'></div>
+{{/if}}
+
+{{#bs-modal title=(t 'Error') open=campaignCopyError onHide=(action 'toggleModal' 'campaignCopyError') as |modal|}}
+  {{#modal.body}}
+    <p>{{t 'An error occurred during the campaign duplication. The duplication will not be functional.'}}</p>
+  {{/modal.body}}
+{{/bs-modal}}
+
+<div class="page-header">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h1>
+        <span class="text-muted hidden-sm">{{t 'Edit Project'}}</span>
+        {{model.project.name}}
+      </h1>
+    </div>
+
+    <div class="heading-elements">
+      <form class="heading-form" action="#">
+        <span class="heading-text hidden-sm">{{t 'Switch Project'}}</span>
+        <div class="form-group heading-form">
+          {{#power-select options=model.project.client.projects selected=model.project searchEnabled=false onchange=(action 'redirect') as |project|}}
+            {{project.name}}
+          {{/power-select}}
+        </div>
+      </form>
+    </div>
+    <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+  </div>
+
+  <div class="breadcrumb-line breadcrumb-line-component">
+    <ul class="breadcrumb">
+      <li>
+        {{#link-to 'index'}}
+          <i class="icon-home2 position-left"></i> {{t 'Home'}}
+        {{/link-to}}
+      </li>
+      <li>
+        {{#link-to 'projects.index'}}
+          {{t 'Projects'}}
+        {{/link-to}}
+      </li>
+      <li class="active">{{model.project.name}}</li>
+    </ul>
+    {{#p-breadcrumb-sort}}
+      {{p-breadcrumb-sort-item
+        icon='numeric'
+        attribute='createdAt'
+        current=sort
+        title='Created'
+      }}
+      {{p-breadcrumb-sort-item
+        icon='alpha'
+        attribute='name'
+        current=sort
+        title='Name'
+      }}
+      {{p-breadcrumb-sort-item
+        icon='amount'
+        attribute='state'
+        current=sort
+        title='State'
+      }}
+    {{/p-breadcrumb-sort}}
+  </div>
+</div>
+
+<div class="content">
+   {{#bs-modal title=(t 'Create Campaign') open=openCreateCampaignModal onHide=(action 'toggleModal' 'openCreateCampaignModal') as |modal|}}
+    {{#modal.body}}
+      {{#bs-form onSubmit=(action 'createCampaign' 'openCreateCampaignModal' this) model=this as |form|}}
+        <label>{{t 'Name'}}</label>
+        {{input type="text" label=(t 'Name') class='form-control' value=name autofocus=true maxlength=30}}
+        <label>{{t 'Description'}}</label>
+        {{textarea value=description class='form-control vertical-resize'}}
+      {{/bs-form}}
+    {{/modal.body}}
+    {{#modal.footer}}
+      {{#if savingError}}
+          <p>{{t 'Saving error, could not create campaign'}}</p>
+      {{/if}}
+      {{#bs-button onClick=(action modal.close)}}{{t 'Cancel'}}{{/bs-button}}
+      {{#bs-button buttonType="submit" type="primary"}}{{t 'Create'}}{{/bs-button}}
+    {{/modal.footer}}
+  {{/bs-modal}}
+
+   {{#bs-modal title=(t 'Delete Campaign') open=openDestroyCampaignModal onHide=(action 'toggleModal' 'openDestroyCampaignModal') onSubmit=(action 'deleteCampaign' 'openDestroyCampaignModal') as |modal|}}
+    {{#modal.body}}
+      <p class="text-muted">
+        {{t 'Are you 100% sure that you wanna do this? Deleting a campaign cannot be undone.'}}
+      </p>
+    {{/modal.body}}
+    {{#modal.footer}}
+      {{#bs-button onClick=(action modal.close)}}{{t 'Cancel'}}{{/bs-button}}
+      {{#bs-button buttonType="submit" type="danger"}}{{t 'Delete it!'}}{{/bs-button}}
+    {{/modal.footer}}
+  {{/bs-modal}}
+
+  <div class="row">
+    <div class="col-lg-9 col-md-12">
+      <div class="row campaigns-list">
+        <div {{action 'openModal' 'openCreateCampaignModal'}} class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+          <div class="thumbnail">
+            <div class="thumb">
+              <img src="/images/project-add-600x450.png">
+              <div class="caption-overflow">
+              <span>
+                <a class="btn border-white text-white btn-flat btn-icon btn-rounded ml-5">
+                  <i class="icon-plus2"></i>
+                </a>
+              </span>
+              </div>
+            </div>
+            <div class="caption">
+              <h6 class="no-margin">
+                <a class="text-default">{{t 'Create Campaign'}}</a>
+              </h6>
+            <small class="text-muted">&nbsp;</small>
+            </div>
+          </div>
+        </div>
+        {{#unless campaigns}}
+          <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+            {{p-how-to title='Create a new campaign by pressing the + button on the left.'}}
+          </div>
+        {{/unless}}
+        {{#each campaigns as |campaign|}}
+          {{p-campaign-item campaign=campaign copy=(action 'campaignDuplication' campaign) remove=(action 'openModal' 'openDestroyCampaignModal' campaign)}}
+        {{/each}}
+      </div>
+      <hr>
+
+      <div class="row">
+        <div class="col-sm-12 text-left">
+          {{#p-panel title=(t 'Danger Zone') collapsed=true class='panel-flat border-left-lg border-left-danger'}}
+            <div class="row">
+              <div class="col-sm-9">
+                <p class="text-muted">
+                  {{t 'Deleting a project cannot be undone. It will also delete all campaigns!'}}
+                </p>
+              </div>
+              <div class="col-sm-3 text-right">
+                <button {{action 'openModal' 'openDestroyProjectModal'}} class="btn btn-danger">
+                  {{t 'Delete Project'}}
+                </button>
+                 {{#bs-modal title=(t 'Delete Project') open=openDestroyProjectModal onHide=(action 'toggleModal' 'openDestroyProjectModal') onSubmit=(action 'deleteProject' 'openDestroyProjectModal') as |modal|}}
+                  {{#modal.body}}
+                    <p class="text-muted">
+                      {{t 'Are you 100% sure that you wanna do this? Deleting a project cannot be undone.'}}
+                    </p>
+                  {{/modal.body}}
+                  {{#modal.footer}}
+                    {{#bs-button onClick=(action modal.close)}}{{t 'Cancel'}}{{/bs-button}}
+                    {{#bs-button buttonType="submit" type="danger"}}{{t 'Delete it!'}}{{/bs-button}}
+                  {{/modal.footer}}
+                {{/bs-modal}}
+              </div>
+            </div>
+          {{/p-panel}}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-12">
+      <div class="row">
+        <div class="col-sm-12">
+          {{#p-panel title=(t 'Project settings') class='panel-default'}}
+            <div class="thumbnail">
+              {{#p-upload url=(concat (api) "/files") class='thumb' success=(action 'addProjectImage')}}
+                {{#if model.project.image}}
+                  <img src="{{media model.project.image.id width=450 height=300}}" alt="Project Image: {{model.project.name}}">
+                {{else}}
+                  <img src="/images/project-placeholder.png" alt="Upload a project image">
+                {{/if}}
+              {{/p-upload}}
+              <div class="caption text-center">
+                <span class="text-muted">{{t 'Click on image to edit.'}}</span>
+              </div>
+            </div>
+            <form>
+              <div class="form-group">
+                <label class="text-semibold">{{t 'Name'}}</label>
+                {{input value=model.project.name type='text' disabled=isSaving class='form-control' maxlength=30}}
+              </div>
+              <div class="form-group">
+                <label class="text-semibold">{{t 'Description'}}</label>
+                {{textarea value=model.project.description rows=5 disabled=isSaving class='form-control'}}
+              </div>
+              <hr>
+              <div class="right">
+                <button class="btn btn-primary btn-block save" {{action 'saveProject'}}>
+                  {{t 'Save'}}
+                  {{#if isSaving}}
+                    <i class="fa fa-spin fa-circle-o-notch"></i>
+                  {{/if}}
+                </button>
+              </div>
+            </form>
+          {{/p-panel}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

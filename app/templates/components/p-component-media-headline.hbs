@@ -1,0 +1,10 @@
+<div class="form-group">
+  <label class="col-lg-2 control-label text-right">{{t 'Headline'}}</label>
+  <div class="col-lg-10">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="icon-paragraph-left2"></i></span>
+      {{textarea focus-out=(action 'setDirty') rows="1" cols="5" class="form-control" value=data.headline placeholder=(t "Enter headline here...")}}
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,44 @@
+{{#each groups as |group|}}
+  <div class="group">
+    <div class="group-header">
+
+      <span class="group-title">
+        <i class="{{group.icon}} position-left"></i> {{t group.name}}
+      </span>
+
+      <span class="group-control">
+        <a {{action 'move' group 'up'}} class="icon-arrow-up5"></a>
+        <a {{action 'move' group 'down'}} class="icon-arrow-down5"></a>
+        <a {{action 'removeGroup' group}} class="icon-bin remove-group"></a>
+      </span>
+    </div>
+    <div class="collapse in" id="collapsible-{{elementId}}">
+      {{#if group.has_multiple_components}}
+        {{#bs-tab customTabs=true as |tab|}}
+          <div class="content-group">
+          {{#bs-nav type="tabs" as |nav|}}
+            {{#each group.components as |component|}}
+              {{#nav.item active=(bs-eq tab.activeId (concat component.name '-' group.order))}}
+                <a href="#{{component.name}}-{{group.order}}" role="tab" {{action tab.select (concat component.name '-' group.order)}}>{{t component.name}}</a>
+                <i class="{{component.icon}}"></i>
+              {{/nav.item}}
+            {{/each}}
+          {{/bs-nav}}
+          </div>
+
+          <div class="tab-content">
+          {{#each group.components as |component|}}
+            {{#tab.pane elementId=(concat component.name '-' group.order) title=(t component.name)}}
+              {{component (concat 'p-component-' component.element.type) data=component.element trigger_tab=component.trigger timer_tab=component.timer}}
+            {{/tab.pane}}
+          {{/each}}
+          </div>
+        {{/bs-tab}}
+      {{else}}
+        {{#each group.components as |component|}}
+          {{component (concat 'p-component-' component.element.type) data=component.element}}
+        {{/each}}
+      {{/if}}
+    </div>
+  </div>
+{{/each}}

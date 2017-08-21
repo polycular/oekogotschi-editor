@@ -1,0 +1,117 @@
+<div class="page-header">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h1>{{t 'Clients'}}</h1>
+    </div>
+  </div>
+
+  <div class="breadcrumb-line breadcrumb-line-component">
+    <ul class="breadcrumb">
+      <li>
+        {{#link-to 'index'}}
+          <i class="icon-home2 position-left"></i> {{t 'Home'}}
+        {{/link-to}}
+      </li>
+      <li class="active">{{t 'Clients'}}</li>
+    </ul>
+    <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="panel panel-flat">
+    <div class="panel-heading">
+      <h5 class="panel-title">{{t 'Clients'}}</h5>
+    </div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+        <tr>
+          <th class="text-center">#</th>
+          <th>{{t 'Name'}}</th>
+          <th>{{t 'Key'}}</th>
+          <th class="text-center">{{t '# Projects'}}</th>
+          <th>{{t 'Owner'}}</th>
+          <th>{{t 'Created'}}</th>
+          <th class="text-right">{{t 'Actions'}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each model as |client index|}}
+          <tr>
+            <td class="text-center">{{increment index}}</td>
+            <td>
+              {{#link-to 'clients.edit' client.id}}
+                {{client.name}}
+              {{/link-to}}
+            </td>
+            <td>{{client.id}}</td>
+            <td class="text-center">
+              {{#link-to 'projects.index' (query-params client=client.id)}}
+                {{client.projects.length}}
+              {{/link-to}}
+            </td>
+            <td>
+              {{#link-to 'users.edit' client.creator.id}}
+                {{client.creator.displayName}}
+              {{/link-to}}
+            </td>
+            <td>{{format-date client.createdAt format='LL'}}</td>
+            <td class="text-right">
+              <ul class="icons-list">
+                <li>
+                  {{#link-to 'clients.edit' client.id}}
+                    <i class="icon-pencil7"></i>
+                  {{/link-to}}
+                </li>
+                <li class="text-danger">
+                  <a {{action 'openModal' 'openDestroyClientModal' client}}>
+                    <i class="icon-bin"></i>
+                  </a>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        {{/each}}
+        </tbody>
+        <tfoot>
+        <tr>
+          <th colspan="7" class="text-right">
+            <ul class="list list-inline no-margin">
+              <li>
+                <a {{action 'openModal' 'openCreateClientModal'}} class="text-default">
+                  <i class="fa fa-plus position-left"></i>
+                  {{t 'Add Client'}}
+                </a>
+                {{#bs-modal title=(t 'Create Client') open=openCreateClientModal onHide=(action 'toggleModal' 'openCreateClientModal') as |modal|}}
+                  {{#modal.body}}
+                    {{#bs-form onSubmit=(action 'createClient' 'openCreateClientModal' this) model=this as |form|}}
+                      {{form.element controlType="text" label=(t 'Name') property="name" autofocus=true}}
+                    {{/bs-form}}
+                  {{/modal.body}}
+                  {{modal.footer closeTitle=(t 'Cancel') submitTitle=(t 'Create') }}
+                {{/bs-modal}}
+              </li>
+            </ul>
+          </th>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="panel-body text-right">
+      {{p-pagination total=model.meta.count size=size page=page data=model gotoPage=(action 'goto')}}
+    </div>
+  </div>
+</div>
+
+{{#bs-modal title=(t 'Destroy Client') open=openDestroyClientModal onHide=(action 'toggleModal' 'openDestroyClientModal') as |modal|}}
+  {{#modal.body}}
+    {{#bs-form onSubmit=(action 'destroyClient' 'openDestroyClientModal' this) model=this}}
+      <p class="text-muted">
+        {{t 'Are you 100% sure that you wanna do this? Deleting a client cannot be undone.'}}
+      </p>
+    {{/bs-form}}
+  {{/modal.body}}
+  {{modal.footer closeTitle=(t 'Cancel') submitTitle=(t 'Destroy')}}
+{{/bs-modal}}

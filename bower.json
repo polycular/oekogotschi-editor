@@ -1,0 +1,7 @@
+{
+  "name": "editor",
+  "dependencies": {
+    "bootstrap-datepicker": "^1.x",
+    "font-awesome": "^4.x"
+  }
+}

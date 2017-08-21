@@ -1,0 +1,208 @@
+// Layout
+// ------------------------------
+// Component animation
+@import "core/layout/component-animation.less";
+// Layout core
+@import "core/layout/sidebar.less";
+@import "core/layout/content.less";
+@import "core/layout/boxed.less";
+@import "core/layout/footer.less";
+// Utilities
+@import "core/layout/utils.less";
+// Page loader
+// ------------------------------
+// Pace page loader
+@import "components/pace/default.less";
+// Bootstrap datepicker
+@import "components/plugins/pickers/bootstrap-datepicker.less";
+// Core
+@import "components/plugins/tables/datatables/datatables.less";
+// Datatables - columns reorder
+@import "components/plugins/tables/datatables/datatable-columns-reorder.less";
+// Datatables - rows reorder
+@import "components/plugins/tables/datatables/datatable-rows-reorder.less";
+// Datatables - fixed columns
+@import "components/plugins/tables/datatables/datatable-fixed-columns.less";
+// Datatables - fixed header
+@import "components/plugins/tables/datatables/datatable-fixed-header.less";
+// Datatables - autofill
+@import "components/plugins/tables/datatables/datatable-autofill.less";
+// Datatables - select
+@import "components/plugins/tables/datatables/datatable-select.less";
+// Datatables - buttons
+@import "components/plugins/tables/datatables/datatable-buttons.less";
+// Datatables - key table
+@import "components/plugins/tables/datatables/datatable-keytable.less";
+// Datatables - scroller
+@import "components/plugins/tables/datatables/datatable-scroller.less";
+// Datatables - responsive
+@import "components/plugins/tables/datatables/datatable-responsive.less";
+// Page kits
+// ------------------------------
+// Login
+@import "components/pages/login.less";
+// Timelines
+@import "components/pages/timelines.less";
+// Other components
+// ------------------------------
+// Heading elements
+@import "components/ui/heading-elements.less";
+// Helpers
+@import "components/ui/helpers.less";
+// Snippets
+@import "components/ui/snippets.less";
+
+html {
+  overflow-x: hidden;
+}
+
+.form-control-autocomplete {
+  input {
+    .form-control;
+  }
+}
+
+.ember-cli-g-map {
+  height: 45em !important;
+  width: 100% !important;
+  // HACK - !important needed for gmap within a bootstrap tab
+}
+// HACK - needed for gmap sizing within a bootstrap tab
+.tab-content > .tab-pane:not(.active) {
+  display: block !important;
+  height: 0 !important;
+  overflow: hidden;
+}
+
+.ember-power-select-trigger:extend(.form-control all) {
+  color: initial;
+}
+
+.ember-basic-dropdown-content-wormhole-origin {
+  background-color: white;
+}
+.ember-basic-dropdown-content ul {
+  padding-left: 1.2em;
+}
+.ember-basic-dropdown-content li {
+  padding: .5em 0;
+}
+.ember-basic-dropdown-content li[aria-selected="true"] {
+  display: none;
+}
+
+.ember-power-select-option[aria-current="true"],
+.ember-power-select-option:hover {
+  color: initial;
+  background-color: initial;
+}
+
+.ember-power-select-multiple-trigger {
+  height: 3.75em;
+}
+
+.ember-power-select-multiple-option {
+  padding: .5em;
+  border: none;
+  border-radius: 2px;
+}
+.ember-power-select-multiple-option:not(:last-of-type) {
+  margin-right: .5em;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+[contenteditable=true]:empty:not(:focus):before,
+[contenteditable=true]:focus:empty:before {
+  content: attr(placeholder);
+}
+
+.ember-content-editable.clear-on-focus[contenteditable=true]:empty:focus:before {
+  content: '';
+}
+
+[contenteditable=true] {
+  cursor: text;
+}
+
+.ember-content-editable:empty {
+  color: #a9a9a9;
+}
+
+.ember-content-editable:empty:after {
+  content: "\0000a0";
+}
+
+.CodeMirror {
+  border: 1px solid #ddd;
+}
+
+.dropzone {
+  min-height: 150px;
+  border: none;
+  background: white;
+  padding: 0;
+
+  &:hover {
+    outline: 1px solid @brand-primary;
+    outline-offset: -1px;
+  }
+  &.dz-drag-hover {
+    outline: 4px solid @brand-primary;
+    outline-offset: -4px;
+  }
+}
+
+.no-wrap{
+  white-space: nowrap;
+}
+
+.breadcrumb-elements > li {
+  a {
+    color: #999;
+  }
+}
+.breadcrumb-elements > li.active {
+  a {
+    color: #333;
+  }
+}
+
+.panel-title input[type="text"]{
+  width: ~"calc(100% - 46px)";
+  font-size: 17px;
+}
+.has-controls .panel-title input[type="text"]{
+  width: ~"calc(100% - 104px)";
+}
+
+.shortened {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .campaigns-list .thumbnail .caption {
+    height: 110px;
+  }
+}
+
+.datepicker-box {
+    border: 1px solid #ddd;
+    & > div {
+      margin: 0 auto;
+      width:257px;
+    }
+}
+
+.qr-code img {
+  width:100%;
+  max-width: 15em;
+  margin-left: auto;
+  margin-right: auto;
+}

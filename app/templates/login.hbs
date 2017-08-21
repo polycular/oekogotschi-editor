@@ -1,0 +1,47 @@
+<div class="login-container">
+  <div class="navbar navbar-inverse">
+    <div class="navbar-header">
+      {{#link-to 'index' class='navbar-brand'}}clustar{{/link-to}}
+    </div>
+  </div>
+
+  <div class="page-container">
+    <div class="page-content">
+      <div class="content-wrapper">
+        <div class="content">
+
+          <form {{action 'authenticate' on='submit'}}>
+            <div class="panel panel-body login-form">
+              <div class="text-center">
+                <h5 class="content-group">Login to your account
+                  <small class="display-block">Enter your credentials below</small>
+                </h5>
+              </div>
+
+              <div class="form-group has-feedback has-feedback-left">
+                {{input type='email' value=username placeholder='Email' class='form-control'}}
+                <div class="form-control-feedback">
+                  <i class="icon-user text-muted"></i>
+                </div>
+              </div>
+
+              <div class="form-group has-feedback has-feedback-left">
+                {{input type='password' value=password placeholder='Password' class='form-control'}}
+                <div class="form-control-feedback">
+                  <i class="icon-lock2 text-muted"></i>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Sign in
+                  <i class="icon-circle-right2 position-right"></i></button>
+              </div>
+            </div>
+          </form>
+
+          {{p-footer class='text-center'}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

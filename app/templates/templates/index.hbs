@@ -1,0 +1,68 @@
+<div class="page-header">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h1>{{t 'Templates'}}</h1>
+    </div>
+  </div>
+
+  <div class="breadcrumb-line breadcrumb-line-component">
+    <ul class="breadcrumb">
+      <li>
+        {{#link-to 'index'}}
+          <i class="icon-home2 position-left"></i> {{t 'Home'}}{{/link-to}}
+      </li>
+      <li class="active">{{t 'Templates'}}</li>
+    </ul>
+    <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="panel panel-flat">
+    <div class="panel-heading">
+      <h5 class="panel-title">
+        {{t 'Templates'}}
+      </h5>
+    </div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>{{t 'Name'}}</th>
+          <th>{{t 'Type'}}</th>
+          <th>{{t 'Active'}}</th>
+          <th>{{t 'Updated'}}</th>
+          <th>{{t 'Created'}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each model as |template index|}}
+          <tr>
+            <td>{{increment index}}</td>
+            <td>
+              {{#link-to 'templates.edit' template.id}}
+                {{template.name}}
+              {{/link-to}}
+            </td>
+            <td>{{template.type}}</td>
+            <td>
+              {{#if template.active}}
+                <i class="fa fa-fw fa-check text-success"></i>
+              {{else}}
+                <i class="fa fa-fw fa-times text-danger"></i>
+              {{/if}}
+            </td>
+            <td>{{moment-from-now template.updatedAt}}</td>
+            <td>{{moment-from-now template.createdAt}}</td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    </div>
+    <div class="panel-body text-right">
+      {{p-pagination total=model.meta.count size=size page=page data=model gotoPage=(action 'goto')}}
+    </div>
+  </div>
+</div>

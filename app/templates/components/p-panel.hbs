@@ -1,0 +1,13 @@
+<div class="panel-heading">
+  {{#if isCollapsible}}
+  <a {{action 'toggleCollapse'}} class="panel-heading-collaps">
+    <i class="{{if collapsed "fa fa-expand" "fa fa-compress"}}"></i>
+  </a>
+  <h6 class="panel-title text-semibold">{{title}}</h6>
+  {{else}}
+  <h6 class="panel-title text-semibold">{{title}}</h6>
+  {{/if}}
+</div>
+<div class="panel-body">
+  {{yield}}
+</div>

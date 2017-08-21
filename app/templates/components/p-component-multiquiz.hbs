@@ -1,0 +1,88 @@
+{{#bs-tab customTabs=true as |tab|}}
+  {{#bs-nav type="tabs" as |nav|}}
+    {{#nav.item active=(bs-eq tab.activeId (concat 'quiz-' data.orderId))}}
+      <a href="#quiz" role="tab" {{action tab.select (concat 'quiz-' data.orderId)}}>{{t 'Quiz'}}</a>
+      <i class="icon-list"></i>
+    {{/nav.item}}
+    {{#nav.item active=(bs-eq tab.activeId (concat 'quiz-timer-' data.orderId))}}
+      <a href="#quiz-timer{{data.orderId}}" role="tab" {{action tab.select (concat 'quiz-timer-' data.orderId)}}>{{t 'Timer'}}</a>
+      <i class="fa fa-clock-o"></i>
+    {{/nav.item}}
+  {{/bs-nav}}
+
+  <div class="tab-content">
+  {{#tab.pane elementId=(concat 'quiz-' data.orderId) title=(t 'Quiz')}}
+    <div class="form-group">
+      <label class="col-lg-2 control-label text-right">{{t 'Quiz Question'}}</label>
+      <div class="col-lg-10">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon-question7"></i></span>
+          {{textarea rows="5" cols="5" class="form-control" value=data.question placeholder=(t "Enter question here…")}}
+        </div>
+      </div>
+    </div>
+
+    {{#each data.answers as |answer index|}}
+      <div class="form-group no-margin-bottom mb-10">
+        <label class="col-lg-2 control-label text-right">{{t 'Answer'}} #{{increment index}}</label>
+        <div class="col-lg-10">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="icon-sphere"></i></span>
+            {{input focus-out=(action 'setArray' data.answers index) type="text" class="form-control" placeholder=(t "Fill in the answer…") value=(get (index-of data.answers index) 'value')}}
+            <span class="input-group-addon">
+              {{input type="checkbox" click=(action 'toggleCorrectAnswer' index) checked=(includes data.correct index)}} {{t 'Correct Answer'}}
+            </span>
+
+            <span class="input-group-btn">
+              <button {{action 'removeAnswer' index}}  class="btn btn-default" type="button">
+                <i class="text-danger icon-cross2"></i>
+              </button>
+            </span>
+
+          </div>
+        </div>
+      </div>
+    {{/each}}
+
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2 text-left">
+        <button {{action 'addAnswer'}} type="button" class="btn btn-default">
+          <i class="icon-plus2 position-left"></i> {{t 'Add Answer'}}
+        </button>
+      </div>
+    </div>
+
+    <div class="form-group no-margin-bottom mb-10">
+      <label class="col-lg-2 control-label text-right">{{t 'Points'}}</label>
+      <div class="col-lg-10">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-trophy"></i></span>
+          {{input class="form-control" placeholder=(t "Enter max points value here…") value=data.points}}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group no-margin-bottom mb-10">
+      <label class="col-lg-2 control-label text-right">{{t 'Penalty points'}}</label>
+      <div class="col-lg-10">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+          {{input class="form-control" placeholder=(t "Enter penalty value here…") value=data.penalty}}
+        </div>
+      </div>
+    </div>
+  {{/tab.pane}}
+
+  {{#tab.pane elementId=(concat 'quiz-timer-' data.orderId) title=(t 'Timer')}}
+    <div class="form-group no-margin-bottom mb-10">
+      <label class="col-lg-2 control-label text-right">{{t 'Timer'}}</label>
+      <div class="col-lg-10">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+          {{input class="form-control" placeholder=(t "Enter timer value here…") value=data.timer}}
+        </div>
+      </div>
+    </div>
+  {{/tab.pane}}
+  </div>
+{{/bs-tab}}

@@ -1,0 +1,33 @@
+{{#if session.isAuthenticated}}
+  {{#p-navbar}}
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown-user">
+      {{#bs-dropdown as |dd|}}
+        {{#dd.toggle}}
+          <span>{{currentUser.displayName}}</span>
+          <i class="caret"></i>
+        {{/dd.toggle}}
+
+        {{#dd.menu as |ddm|}}
+          {{#ddm.item}}
+            {{#link-to 'users.edit' currentUser.id}}
+              <i class="icon-user-plus"></i> {{t 'My Profile'}}
+            {{/link-to}}
+          {{/ddm.item}}
+          {{#ddm.item}}
+            <a {{action 'logout'}}><i class="icon-switch2"></i> {{t 'Logout'}}</a>
+          {{/ddm.item}}
+        {{/dd.menu}}
+      {{/bs-dropdown}}
+      </li>
+    </ul>
+  {{/p-navbar}}
+  {{#p-container}}
+    {{outlet}}
+  {{/p-container}}
+  {{p-footer}}
+{{else}}
+  {{outlet}}
+{{/if}}
+
+{{outlet 'modal'}}

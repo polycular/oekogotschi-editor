@@ -1,0 +1,37 @@
+<div class="form-group">
+  <label class="col-lg-2 control-label text-right">{{t 'Text'}}</label>
+  <div class="col-lg-10">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="icon-paragraph-left2"></i></span>
+      {{textarea rows="5" cols="5" class="form-control" value=data.text placeholder=(t "Enter text here...")}}
+    </div>
+  </div>
+</div>
+
+{{#each medias as |media|}}
+  <div class="media">
+    <div class="media-header">
+      <span class="media-type">{{t media.type}}</span>
+      <span class="media-control">
+        <a {{action 'remove' media}} class="icon-bin"></a>
+      </span>
+    </div>
+    <div class="media-component">
+      {{component (concat 'p-component-media-' media.type) data=media setDirty=(action 'setDirty')}}
+    </div>
+  </div>
+{{/each}}
+
+{{#unless hasMedia}}
+<div class="media-add form-group">
+  <label class="col-lg-2 control-label text-right">{{t 'Insert Media'}}</label>
+  <div class="col-lg-10">
+  {{#each mediaOptions as |mediaOption|}}
+    <button {{action 'addMedia' data mediaOption.type}} type="button" class="btn">
+      <i class="fa {{mediaOption.icon}}"></i>
+      <span>{{t mediaOption.name}}</span>
+    </button>
+  {{/each}}
+  </div>
+</div>
+{{/unless}}

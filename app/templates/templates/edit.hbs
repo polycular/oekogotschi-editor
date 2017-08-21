@@ -1,0 +1,66 @@
+<div class="page-header">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h1>
+        <span class="text-muted">{{t 'Template'}}</span>
+        {{model.name}}
+      </h1>
+    </div>
+  </div>
+
+  <div class="breadcrumb-line breadcrumb-line-component">
+    <ul class="breadcrumb">
+      <li>
+        {{#link-to 'index'}}
+          <i class="icon-home2 position-left"></i> {{t 'Home'}}{{/link-to}}
+      </li>
+      <li>
+        {{#link-to 'templates'}}
+          {{t 'Templates'}}
+        {{/link-to}}
+      </li>
+      <li class="active">{{model.name}}</li>
+    </ul>
+    <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="row">
+
+    <div class="col-sm-12">
+      <div class="panel panel-flat">
+        <div class="panel-heading">
+          <h5 class="panel-title">{{t 'Template'}}</h5>
+        </div>
+        <div class="panel-body">
+          <form {{action 'save' on='submit'}}>
+            <fieldset class="content-group">
+              <legend class="text-bold">{{t 'Settings'}}</legend>
+
+              <div class="form-group">
+                <label class="control-label">{{t 'Name'}}</label>
+                {{input type='text' value=model.name class='form-control'}}
+              </div>
+
+              <div class="form-group">
+                <label class="control-label">{{t 'Definition'}}</label>
+                {{ivy-codemirror class='form-control' options=(hash lineNumbers=true theme='xq-light' mode='javascript') value=definition valueUpdated=(action (mut definition))}}
+              </div>
+
+              {{#if model.active}}
+                <button {{action 'toggleActive'}} type="submit" class="btn btn-danger">{{t 'Disable'}}</button>
+              {{else}}
+                <button {{action 'toggleActive'}} type="submit" class="btn btn-success">{{t 'Enable'}}</button>
+              {{/if}}
+              <button type="submit" class="btn btn-primary">{{t 'Save'}}</button>
+
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

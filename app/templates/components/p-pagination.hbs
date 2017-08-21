@@ -1,0 +1,49 @@
+{{#if hasManyPages}}
+  {{#if isFirst}}
+    <li class="disabled">
+      <a href="javascript:void(0)">{{t 'First'}}</a>
+    </li>
+  {{else}}
+    <li>
+      <a {{action 'goto' 1}}>{{t 'First'}}</a>
+    </li>
+  {{/if}}
+{{/if}}
+{{#if isFirst}}
+  <li class="disabled">
+    <a href="javascript:void(0)">{{t 'Prev'}}</a>
+  </li>
+{{else}}
+  <li>
+    <a {{action 'goto' 'prev'}}>{{t 'Prev'}}</a>
+  </li>
+{{/if}}
+{{#each range as |isCurrent index|}}
+  <li class="{{if isCurrent 'active'}}">
+    {{#if isCurrent}}
+      <a href="javascript:void(0)">{{increment index by=offset}}</a>
+    {{else}}
+      <a {{action 'goto' (increment index by=offset)}}>{{increment index by=offset}}</a>
+    {{/if}}
+  </li>
+{{/each}}
+{{#if isLast}}
+  <li class="disabled">
+    <a href="javascript:void(0)">{{t 'Next'}}</a>
+  </li>
+{{else}}
+  <li>
+    <a {{action 'goto' 'next'}}>{{t 'Next'}}</a>
+  </li>
+{{/if}}
+{{#if hasManyPages}}
+  {{#if isLast}}
+    <li class="disabled">
+      <a href="javascript:void(0)">{{t 'Last'}}</a>
+    </li>
+  {{else}}
+    <li>
+      <a {{action 'goto' max}}>{{t 'Last'}}</a>
+    </li>
+  {{/if}}
+{{/if}}

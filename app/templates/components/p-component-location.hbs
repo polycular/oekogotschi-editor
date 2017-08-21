@@ -1,0 +1,118 @@
+{{#unless trigger_tab}}
+<div class="form-group">
+  <div class="col-sm-12">
+    {{g-maps name=name lat=lat lng=lng zoom=zoom markers=markers circles=circles scrollwheel=false disableDoubleClickZoom=true dblclick='setPin'}}
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-lg-2 control-label text-right">{{t 'Address'}}</label>
+  <div class="col-lg-10">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="icon-location4"></i></span>
+      <div class="form-control-autocomplete g-autocomplete ember-view">
+        {{g-autocomplete
+          class="form-control-autocomplete"
+          value=address.content
+          placeholder=(t "Enter address here…")
+          on-select=(action 'didUpdatePlace')
+        }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-group no-margin-bottom mb-10">
+  <label class="col-lg-2 control-label text-right">{{t 'Latitude'}}</label>
+  <div class="col-lg-4">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="icon-target2"></i></span>
+      {{input
+        class="form-control"
+        placeholder=(t "Enter latitude here…")
+        value=(to-fixed data.latitude)
+        type="number"
+        key-up="setLat"
+      }}
+    </div>
+  </div>
+
+  <label class="col-lg-2 control-label text-right">{{t 'Longitude'}}</label>
+  <div class="col-lg-4">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="icon-target2"></i></span>
+      {{input
+        class="form-control"
+        placeholder=(t "Enter longitude here…")
+        value=(to-fixed data.longitude)
+        type="number"
+        key-up="setLng"
+      }}
+    </div>
+  </div>
+</div>
+
+<div class="form-group no-margin-bottom mb-10">
+  <label class="col-lg-2 control-label text-right">{{t 'Radius'}}</label>
+  <div class="col-lg-10">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-circle-thin"></i></span>
+      {{input
+        class='form-control'
+        type='number'
+        value=data.radius
+        placeholder=(t "Enter radius value here…")
+      }}
+    </div>
+  </div>
+</div>
+{{/unless}}
+
+{{#if trigger_tab}}
+<div class="col-lg-10 trigger">
+  <p>{{t 'In addition to the classic Geo-Fence, which is triggered by GPS, there are further triggers available in our system. In the default setting (options below), the selected triggers are used as security if Geo-Fence is not activated correctly using GPS.'}}</p>
+
+  <div>
+    <p class="grid-container">
+      <input id='PIN' type='checkbox' checked={{data.triggerByPin}} onclick={{action (mut data.triggerByPin) value='target.checked'}}>
+      <label for='PIN'>{{t 'PIN'}}</label>
+      {{input type='text' value=data.pin placeholder=(t 'Enter PIN')}}
+    </p>
+    <p class="grid-container">
+      <input id='QR-code' type='checkbox' checked={{data.triggerByQr}} onclick={{action (mut data.triggerByQr) value='target.checked'}}>
+      <label for='QR-code'>{{t 'QR Code'}}</label>
+      <input type='text' value={{data.id}} readonly>
+      <button type='button' {{action 'toggleQR'}}>{{t 'Generate'}}</button>
+    </p>
+    <p class="grid-container">
+      <input id='BT-beacon' type='checkbox' checked={{data.triggerByBt}} onclick={{action (mut data.triggerByBt) value='target.checked'}}>
+      <label for='BT-beacon'>{{t 'BT Beacon'}}</label>
+      <input type='text' value={{data.id}} readonly>
+    </p>
+  </div>
+
+  {{#bs-modal title=(t 'QR Trigger') open=showQR onHide=(action 'toggleQR') as |modal|}}
+    {{#modal.body}}
+      <p>{{t 'Save the QR-Code below to use it as trigger on your location.'}}</p>
+      {{#if showQR}}
+      <div class="qr-code">
+         {{qr-code text=data.id width=512 height=512}}
+      </div>
+      {{/if}}
+    {{/modal.body}}
+    {{modal.footer}}
+  {{/bs-modal}}
+
+  <b>{{t 'Options'}}</b>
+
+  <p>{{t 'If this option is activated, one of the triggers selected above is required to confirm the arrival of a location.'}}</p>
+
+  <div class="form-group no-margin-bottom mb-10 trigger-option">
+    <label class='switch'>
+      <input id='trigger-required' type='checkbox' checked={{data.triggerRequired}} onChange={{action 'toggle_trigger_required' value='target.checked'}} />
+      <span class='slider'></span>
+    </label>
+    <span for='trigger-required'>{{t 'Trigger is required to continue'}}</span>
+  </div>
+</div>
+{{/if}}
