@@ -1,0 +1,18 @@
+# System
+.DS_Store
+
+# IDE
+.idea
+
+# compiled output
+/dist
+/tmp
+
+# dependencies
+/node_modules
+/bower_components
+
+# misc
+testem.log
+yarn-error.log
+npm-debug.log
